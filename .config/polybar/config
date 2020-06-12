@@ -33,7 +33,7 @@ width = 100%
 height = 27
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+;radius = 6.0
 fixed-center = false
 bottom = true
 
@@ -56,7 +56,7 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3
+modules-left = bspwm
 ;modules-center = mpd
 modules-right = filesystem xbacklight pulseaudio memory cpu wlan eth temperature date powermenu
 
