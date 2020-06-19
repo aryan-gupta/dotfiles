@@ -14,6 +14,10 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# flameshot
+{shift +,_}Print
+	flameshot {full -c -p ~/Pictures,gui}
+
 #
 # bspwm hotkeys
 #
@@ -70,9 +74,9 @@ super + {_,shift + }c
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+# focus the next/previous node in the current desktop
+super + {_,shift + }Tab
+	bspc node -f {next,prev}.local
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -88,9 +92,9 @@ super + {_,shift + }{1-9,0}
 # preselect
 #
 
-# preselect the direction
+# move the previous node to the selected split direction of the current node
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+	bspc node -p {west,south,north,east} && bspc node -f 'last.local' && bspc node -n 'last.!automatic.local'
 
 # preselect the ratio
 super + ctrl + {1-9}
