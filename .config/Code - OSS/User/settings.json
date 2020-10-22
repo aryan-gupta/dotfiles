@@ -1,0 +1,37 @@
+{
+    "window.zoomLevel": 1,
+    "glassit.alpha": 225,
+    "terminal.integrated.rendererType": "dom",
+    "workbench.colorCustomizations": {
+        "workbench.background": "#ffffff00",
+    
+        "activityBar.background": "#ffffff00",
+        "button.background": "#ffffff00",
+        "button.hoverBackground": "#ffffff00",
+    
+        "editor.background": "#ffffff00",
+        "editor.lineHighlightBackground": "#ffffff00",
+        "editorGroupHeader.tabsBackground": "#ffffff00",
+        "tab.activeBackground": "#ffffff00",
+        "tab.inactiveBackground": "#ffffff00",
+        "tab.border": "#ffffff00",
+    
+        "list.activeSelectionBackground": "#ffffff00",
+        "list.hoverBackground": "#ffffff00",
+        "list.inactiveSelectionBackground": "#ffffff00",
+    
+        "panel.background": "#ffffff00",
+        "panel.border": "#ffffff00",
+    
+        "sideBar.background": "#ffffff00",
+        "sideBarSectionHeader.background": "#ffffff00",
+    
+        "statusBar.background": "#ffffff00",
+        "statusBar.noFolderBackground": "#ffffff00",
+        "terminal.background": "#ffffff00",
+        "titleBar.activeBackground": "#ffffff00"
+      },
+      "window.menuBarVisibility": "toggle",
+      "workbench.sideBar.location": "right",
+      "editor.minimap.enabled": false,
+}

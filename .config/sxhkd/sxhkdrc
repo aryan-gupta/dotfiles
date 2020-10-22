@@ -8,6 +8,10 @@ super + Return
 
 # program launcher
 super + @space
+	rofi -show drun -theme clean
+
+# program launcher
+super + d
 	rofi -show drun
 
 # make sxhkd reload its configuration files:
@@ -17,6 +21,58 @@ super + Escape
 # flameshot
 {shift +,_}Print
 	flameshot {full -c -p ~/Pictures,gui}
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +10%
+
+XF86AudioLowerVolume 
+	pactl set-sink-volume @DEFAULT_SINK@ -10%
+
+XF86AudioMute        
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	
+XF86AudioMicMute     
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+alt + space
+	mpc toggle
+
+super + button4
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+
+super + button5
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+# super + button2
+# 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+super + {_,shift + }grave
+	bspc desktop -f {next,prev}.local.occupied
+
+#
+# Applications
+#
+
+# Open Chrome
+alt + {c,i}
+	chromium {--new-window,--incognito}
+
+alt + v
+	code -n
+
+# New terminal
+alt + t
+	alacritty
+
+alt + Return
+	alacritty
+
+alt + f
+	nautilus --new-window
+
+
+alt + p
+	firefox
 
 #
 # bspwm hotkeys
@@ -85,16 +141,20 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
-
+super + {_,shift + }{0-9,minus,equal}
+	bspc {desktop -f,node -d} '{0-9,A,B}'
+	
 #
 # preselect
 #
 
 # move the previous node to the selected split direction of the current node
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east} && bspc node -f 'last.local' && bspc node -n 'last.!automatic.local'
+	bspc node -p {west,south,north,east}
+
+# move the last window to preselected location
+super + ctrl + semicolon
+	bspc node -f 'last.local' && bspc node -n 'last.!automatic.local'
 
 # preselect the ratio
 super + ctrl + {1-9}
@@ -123,16 +183,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-
-#
-# Applications
-#
-
-# Open Chrome
-alt + {c,i}
-	chromium {--new-window,--incognito}
-
-# New terminal
-alt + t
-	alacritty

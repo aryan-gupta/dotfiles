@@ -1,0 +1,15 @@
+[user]
+	name = Aryan Gupta
+	email = kuantum.freak@gmail.com
+[credential]
+	helper = store
+[core]
+	autocrlf = false
+	editor = nano
+[diff]
+	tool = default-difftool
+[difftool "default-difftool"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+	
+[pull]
+	rebase = false

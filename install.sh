@@ -1,14 +1,16 @@
 #!/bin/bash
-# set -x
+set -x
 
 REPO_DIR="${HOME}/Projects/scripts/nix/linux.files"
 
-pushd "${REPO_DIR}/.config"
+pushd "${REPO_DIR}/.config"  >> /dev/null
 
 for D in *; do
 	if [ -d "${D}" ]; then
-		pushd "${HOME}/.config"
-		ln -sf "${REPO_DIR}/.config/${D}" "${D}"
-		popd
+		pushd "${HOME}/.config" >> /dev/null
+		if [ -d "${D}" ]; then
+			ln -s "${REPO_DIR}/.config/${D}" "${D}"
+		fi
+		popd >> /dev/null
 	fi
 done

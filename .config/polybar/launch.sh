@@ -9,4 +9,9 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-polybar bar &
+polybar ws &
+polybar ws2 &
+#polybar bar &
+#polybar info &
+polybar time &
+polybar music &
