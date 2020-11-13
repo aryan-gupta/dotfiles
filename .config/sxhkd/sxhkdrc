@@ -14,9 +14,10 @@ super + @space
 super + d
 	rofi -show drun
 
-# make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
+
+# program launcher
+super + alt + z
+	alacritty --command /usr/bin/systemctl hybrid-sleep 
 
 # flameshot
 {shift +,_}Print
@@ -57,14 +58,11 @@ super + {_,shift + }grave
 alt + {c,i}
 	chromium {--new-window,--incognito}
 
-alt + v
+alt + x
 	code -n
 
 # New terminal
 alt + t
-	alacritty
-
-alt + Return
 	alacritty
 
 alt + f
@@ -78,9 +76,9 @@ alt + p
 # bspwm hotkeys
 #
 
-# quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
+# quit/restart bspwm and sxhkd
+super + Escape
+	bspc wm -r && pkill -USR1 -x sxhkd
 
 # close and kill
 super + {_,shift + }w

@@ -246,7 +246,7 @@ label-urgent-padding = 2
 type = internal/mpd
 format-online = <label-song>
 
-label-song-maxlen = 50
+label-song-maxlen = 48
 label-song-ellipsis = true
 
 [module/mpdc]
