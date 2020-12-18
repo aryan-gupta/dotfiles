@@ -1,18 +1,100 @@
 #! /bin/sh
 
-xrandr --output VGA-1 --off --output HDMI-1 --off --output DP-1 --primary --mode 3840x1600 --pos 3840x560 --rotate normal --output HDMI-2 --off --output HDMI-3 --mode 3840x2160 --pos 0x0 --rotate normal
+HOSTNAME=$(hostname)
 
-sxhkd &
-picom --experimental-backends &
-nitrogen --restore &
-redshift -P -O 3500 &
-$HOME/.config/polybar/launch.sh &
-libinput-gestures-setup start &
-dunst &
-wmname LG3D &
+# ======================== colors =======================
+COLOR_BACKGND_N='#1A1A1A'
+COLOR_BACKGND_L=''
+COLOR_BACKGND_D=''
 
-bspc monitor DP-1 -d 1 2 3 4 5 6 7 8 A B
-bspc monitor HDMI-3 -d 9 0
+COLOR_FOREGND_N='#F5F5F5'
+COLOR_FOREGND_L=''
+COLOR_FOREGND_D=''
+
+COLOR_ACNTLGT_N='#43B48A'
+COLOR_ACNTLGT_L=''
+COLOR_ACNTLGT_D=''
+
+COLOR_ACNTDRK_N='#818848';
+COLOR_ACNTDRK_L='';
+COLOR_ACNTDRK_D='';
+
+COLOR_WARNING_N='';
+COLOR_WARNING_L='';
+COLOR_WARNING_D='';
+
+#export PRIMARY_MONITOR='HDMI-A-0' #'DisplayPort-0'
+export PRIMARY_MONITOR='DisplayPort-0'
+export TV_MONITOR='HDMI-A-0'
+export LEFT_MONITOR='DisplayPort-0'
+export RIGHT_MONITOR='DisplayPort-0'
+
+# xrandr \
+#   --output VGA-1 --off \
+#   --output HDMI-1 --off \
+#   --output DP-1 --primary --mode 3840x1600 --pos 3840x560 --rotate left \
+#   --output HDMI-2 --off --output HDMI-3 --mode 3840x2160 --pos 0x0 --rotate normal
+
+xrandr \
+  --output DisplayPort-0 --primary --mode 3840x1600 --pos 3840x560 --rotate normal --set TearFree on \
+  --output HDMI-A-0 --mode 3840x2160 --pos 0x0 --rotate normal \
+  --output DVI-D-0 --off \
+  --output DVI-I-1 --off
+
+# xrandr --output DisplayPort-0 --off \
+#        --output DisplayPort-1 --off \
+#        --output DisplayPort-2 --off \
+#        --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
+
+
+bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 A B
+bspc monitor $TV_MONITOR -d 9 0
+
+killall -q sxhkd    ; sxhkd &
+killall -q picom    ; picom --experimental-backends &
+killall -q nitrogen ; nitrogen --restore &
+killall -q redshift ; redshift -P -O 3500 &
+killall -q dunst    ; dunst &
+
+# foreground is shade of white
+# background is flat shade of black or transparent
+# primary is dark accent color
+# seconday is light accent color
+# alert is alert color TBD
+export COLOR_FOREGROUND='#FFf5f5f5'
+export COLOR_BACKGROUND='#FF1A1A1A'
+export COLOR_PRIMARY='#FF818848' #'#FF808080'
+export COLOR_SECONDARY='#FF43B48A'
+export COLOR_ALERT='#FFd24d57'
+
+export ROOT_FS_TEXT="%{F$COLOR_PRIMARY}root%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
+export HOME_FS_TEXT="%{F$COLOR_PRIMARY}home%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
+export NAS_FS_TEXT="%{F$COLOR_PRIMARY}nas%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
+export TEMP_TEXT="%{F$COLOR_PRIMARY}temp%{F-}%{F$COLOR_SECONDARY}:%{F-} %temperature-c% "
+export CPU_TEXT="%{F$COLOR_PRIMARY}cpu%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage-sum:3% "
+export MEM_TEXT="%{F$COLOR_PRIMARY}mem%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
+export MUSIC_TEXT="%title%%{F$COLOR_SECONDARY} - %{F-}%{F$COLOR_PRIMARY}%artist%%{F-}"
+export DATE_TEXT="%Y%{F$COLOR_SECONDARY}-%{F-}%m%{F$COLOR_SECONDARY}-%{F-}%d"
+export TIME_TEXT="%H%{F$COLOR_SECONDARY}:%{F-}%M"
+killall -q polybar  ;
+    polybar ws &
+    polybar time &
+    polybar ws-tv &
+    polybar music &
+    polybar sysinfo &
+    polybar ws-flags &
+
+case $HOSTNAME in
+  ("boson")
+    killall -q libinput-gestures-setup && libinput-gestures-setup start &
+    ;;
+  ("graviton")
+    # [ ! -s ~/.config/mpd/pid ] && mpd
+    ;;
+  (*) ;;
+esac
+
+# wmname LG3D &
 
 gap=25
 PANEL_HEIGHT=50
@@ -40,7 +122,7 @@ bspc config pointer_action3 resize_side
 
 bspc config normal_border_color   \#000000
 bspc config focused_border_color  \#683060
-bspc config presel_feedback_color \#1e1125
+bspc config presel_feedback_color $COLOR_ACNTDRK_N
 
 bspc config swallow_first_click false
 bspc config honor_size_hints    true
@@ -48,5 +130,25 @@ bspc config honor_size_hints    true
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
+bspc rule -a Zathura state=tiled
+bspc rule -a *:*:Lenna state=tiled
 
 bspc config external_rules_command "$HOME/.config/bspwm/java_fix"
+
+
+delete_local_receptacles() {
+  for win in $(bspc query -N -n .leaf.local.!window); do
+    bspc node $win -k
+  done
+}
+
+void_empty_desktop(){
+  if [ -z "$(bspc query -N -n .local.focused)" ]; then
+    delete_local_receptacles
+    bspc desktop -f last.occupied.local
+  fi
+}
+
+# Focus the last desktop after all windows are closed
+# bspc subscribe node_transfer |  while read -r _; do void_empty_desktop; done
+bspc subscribe node_remove   |  while read -r _; do void_empty_desktop; done &

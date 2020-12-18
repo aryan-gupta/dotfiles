@@ -1,37 +1,46 @@
 {
-    "window.zoomLevel": 1,
-    "glassit.alpha": 225,
-    "terminal.integrated.rendererType": "dom",
-    "workbench.colorCustomizations": {
-        "workbench.background": "#ffffff00",
-    
-        "activityBar.background": "#ffffff00",
-        "button.background": "#ffffff00",
-        "button.hoverBackground": "#ffffff00",
-    
-        "editor.background": "#ffffff00",
-        "editor.lineHighlightBackground": "#ffffff00",
-        "editorGroupHeader.tabsBackground": "#ffffff00",
-        "tab.activeBackground": "#ffffff00",
-        "tab.inactiveBackground": "#ffffff00",
-        "tab.border": "#ffffff00",
-    
-        "list.activeSelectionBackground": "#ffffff00",
-        "list.hoverBackground": "#ffffff00",
-        "list.inactiveSelectionBackground": "#ffffff00",
-    
-        "panel.background": "#ffffff00",
-        "panel.border": "#ffffff00",
-    
-        "sideBar.background": "#ffffff00",
-        "sideBarSectionHeader.background": "#ffffff00",
-    
-        "statusBar.background": "#ffffff00",
-        "statusBar.noFolderBackground": "#ffffff00",
-        "terminal.background": "#ffffff00",
-        "titleBar.activeBackground": "#ffffff00"
-      },
-      "window.menuBarVisibility": "toggle",
-      "workbench.sideBar.location": "right",
-      "editor.minimap.enabled": false,
+  "terminal.integrated.rendererType": "dom",
+  "workbench.colorCustomizations": {
+    "workbench.background": "#1A1A1AFF",
+
+    "activityBar.background": "#1A1A1AFF",
+    "button.background": "#6d04aeff",
+    "button.hoverBackground": "#AF45DCFF",
+
+    "editor.background": "#1A1A1AFF",
+    "editor.lineHighlightBackground": "#2A2A2AFF",
+    "editorGroupHeader.tabsBackground": "#1A1A1AFF",
+    "tab.activeBackground": "#1A1A1AFF",
+    "tab.inactiveBackground": "#0A0A0AFF",
+    "tab.border": "#1A1A1AFF",
+
+    "list.activeSelectionBackground": "#ffffff00",
+    "list.hoverBackground": "#ffffff00",
+    "list.inactiveSelectionBackground": "#ffffff00",
+
+    "panel.background": "#ffffff00",
+    "panel.border": "#ffffff00",
+
+    "sideBar.background": "#1A1A1AFF",
+    "sideBarSectionHeader.background": "#0A0A0AFF",
+
+    "statusBar.background": "#626D61FF",
+    "statusBar.noFolderBackground": "#626D61FF",
+    "statusBar.debuggingBackground": "#626D61FF",
+    "terminal.background": "#1A1A1AFF",
+    "titleBar.activeBackground": "#db0b0bFF",
+
+    "menu.background": "#db0b0b",
+    "menubar.selectionForeground": "#db0b0b",
+    "menubar.selectionBackground": "#db0b0b",
+    "menu.border": "#db0b0b"
+  },
+  "workbench.sideBar.location": "right",
+  "editor.minimap.enabled": false,
+  "window.zoomLevel": 1,
+  "window.menuBarVisibility": "toggle",
+  "workbench.activityBar.visible": false,
+  "files.associations": {
+    "*.rasi": "css"
+  },
 }

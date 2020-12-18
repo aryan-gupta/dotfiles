@@ -1,0 +1,18 @@
+set recolor true
+
+set default-bg '#1A1A1A'
+set default-fg '#FFFFFF'
+
+set recolor-lightcolor '#1A1A1A'
+set recolor-darkcolor '#FFFFFF'
+
+set font "monospace normal 15"
+
+set inputbar-bg '#626D61'
+set inputbar-fg '#FFFFFF'
+
+set statusbar-bg '#626D61'
+set statusbar-fg '#FFFFFF'
+
+set statusbar-v-padding 2
+set statusbar-h-padding 15

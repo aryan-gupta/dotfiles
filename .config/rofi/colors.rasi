@@ -1,0 +1,23 @@
+* {
+
+    foreground: #f5f5f5ff;
+    selected-foreground:  rgba(255, 255, 255, 100%);
+    
+    background: #1A1A1AFF; 
+    background-solid: #818848ff; 
+    selected-background: #818848FF;
+
+    accent:           #818848;
+    /* background:       #141c21; */
+    background-light: #1C252A;
+    /* foreground:       #93a1a1; */
+    on:               #5BB462;
+    off:              #DE635E;
+
+    small-font: "Comfortaa 14";
+    large-font: "Comfortaa 25";
+
+    red:                  rgba ( 220, 50, 47, 100% );
+    blue:                 rgba ( 38, 139, 210, 100% );
+}
+

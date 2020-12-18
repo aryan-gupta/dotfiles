@@ -1,0 +1,142 @@
+
+
+configuration {
+    modi: "window,drun,run";
+    theme: "clean";
+    show-icons: true;
+    /* run-command: "alacritty --command {cmd}"; */
+    kb-mode-next: "Super+l,Shift+Right,Control+Tab,Alt+l,bracketright";
+    kb-mode-previous: "Super+h,Shift+Left,Control+Shift+Tab,Alt+h,bracketleft";
+}
+
+@import "colors.rasi"
+
+* {
+    background-color:               @background;
+    text-color:                     @foreground;
+}
+
+#window {
+    width: 25%;
+    height: 50%;
+    background-color: @background;
+    padding: 0px 0px;
+    border-color: #6698FF;
+}
+
+#mainbox {
+    border:  0;
+    padding: 0;
+    spacing:                        15px;
+    margin:                         40px;
+}
+
+#textbox {
+    text-color: @foreground;
+}
+
+#listview {
+    /* padding: 5px; */
+    columns: 1;
+    spacing: 0px;
+    cycle: false;
+    dynamic: true;
+    layout: vertical;
+    background-color: transparent;
+}
+
+element {
+    /* margin: 4px; */
+    padding: 15px;
+    /* border-radius: 5px; */
+    orientation: horizontal;
+}
+
+element-icon {
+    size: 30px;
+    margin: 0 10px 0 0;
+}
+
+element-text {
+    /* horizontal-align: 0.15; */
+    font: @small-font;
+    margin: 0 0 0 20px;
+    vertical-align: 0.5;
+}
+
+#element.normal.normal {
+    background-color: transparent;
+    text-color:       @foreground;
+}
+
+#element.selected.normal {
+    background-color: @selected-background;
+    text-color: @selected-foreground;
+    border-color: #d07ef2;
+}
+
+#element.alternate.normal {
+    background-color: transparent;
+    text-color:       @foreground;
+}
+
+#mode-switcher {
+    border:       0px 0px 0px ;
+    border-color: @separatorcolor;
+}
+
+#button {
+    spacing:    0;
+    text-color: @foreground;
+}
+
+#button.selected {
+    background-color: @selected-background;
+    text-color:       @selected-foreground;
+}
+
+#inputbar {
+    spacing: 0;
+    text-color: @selected-foreground;
+    background-color: rgba(0,0,0,0);
+    border: 3px;
+    border-color: @selected-background;
+}
+
+#prompt {
+    font: @large-font;
+    spacing:    0;
+    padding: 5px 0px 30px 20px;
+    text-color: @background;
+    background-color: @selected-background;
+}
+
+#textbox-prompt-colon {
+    font: @large-font;
+    expand: false;
+    str: ":";
+    padding: 5px 20px 30px 0px;
+    margin: 0px 0.3em 0em 0em ;
+    text-color: @background;
+    background-color: @selected-background;
+}
+
+#entry {
+    font: @large-font;
+    spacing:    0;
+    padding: 5px 20px 30px 5px;
+    text-color: @selected-foreground;
+    background-color: @background;
+}
+
+#case-indicator {
+    font: @large-font;
+    spacing:    0;
+    padding: 5px 20px 30px 20px;
+    text-color: @selected-foreground;
+    background-color: @background;
+}
+
+#inputbar {
+    children: [prompt,textbox-prompt-colon,entry,case-indicator];
+}
