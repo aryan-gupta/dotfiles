@@ -50,11 +50,12 @@ xrandr \
 bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 A B
 bspc monitor $TV_MONITOR -d 9 0
 
-killall -q sxhkd    ; sxhkd &
-killall -q picom    ; picom --experimental-backends &
-killall -q nitrogen ; nitrogen --restore &
-killall -q redshift ; redshift -P -O 3500 &
-killall -q dunst    ; dunst &
+killall -q sxhkd     ; sxhkd &
+killall -q picom     ; picom --experimental-backends &
+killall -q nitrogen  ; nitrogen --restore &
+killall -q redshift  ; redshift -P -O 3500 &
+killall -q dunst     ; dunst &
+killall -q flameshot ; flameshot &
 
 # foreground is shade of white
 # background is flat shade of black or transparent
