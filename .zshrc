@@ -85,7 +85,8 @@ source /etc/profile
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/home/aryan/.config/bin:$PATH:/home/aryan/.gem/ruby/2.7.0/bin"
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$HOME/.local/bin:$HOME/.config/bin:$PATH:$GEM_HOME/bin"
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
