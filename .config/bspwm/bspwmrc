@@ -79,7 +79,7 @@ export DATE_TEXT="%Y%{F$COLOR_SECONDARY}-%{F-}%m%{F$COLOR_SECONDARY}-%{F-}%d"
 export TIME_TEXT="%H%{F$COLOR_SECONDARY}:%{F-}%M"
 killall -q polybar  ;
     polybar ws &
-    polybar time &
+#    polybar time &
     polybar ws-tv &
     polybar music &
     polybar sysinfo &
