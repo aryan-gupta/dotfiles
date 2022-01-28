@@ -53,7 +53,7 @@ super + button2
 
 # browser
 alt + {c,i}
-	chromium {--new-window,--incognito}
+	$BROWSER {--new-window,--incognito}
 
 # vs-code
 alt + x

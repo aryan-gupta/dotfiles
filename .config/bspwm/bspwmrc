@@ -65,6 +65,26 @@ esac
 # ======================== displays and desktops ========================
 
 # ======================== apps ========================
+case $HOSTNAME in
+  ("lws420.mosaic.uncc.edu")
+    polybar time &
+    export BROWSER="firefox"
+  ;;
+
+  ("boson")
+    killall -q libinput-gestures-setup && libinput-gestures-setup start &
+    export BROWSER="chrome"
+  ;;
+
+  ("graviton")
+    # [ ! -s ~/.config/mpd/pid ] && mpd
+    export BROWSER="chrome"
+  ;;
+
+  (*) 
+  ;;
+esac
+
 killall -q sxhkd     ; sxhkd &
 killall -q picom     ; picom --experimental-backends &
 killall -q nitrogen  ; nitrogen --restore &
@@ -99,23 +119,6 @@ killall -q polybar  ;
     polybar music &
     polybar sysinfo &
     polybar ws-flags &
-
-case $HOSTNAME in
-  ("lws420")
-    polybar time &
-  ;;
-
-  ("boson")
-    killall -q libinput-gestures-setup && libinput-gestures-setup start &
-  ;;
-
-  ("graviton")
-    # [ ! -s ~/.config/mpd/pid ] && mpd
-  ;;
-
-  (*) 
-  ;;
-esac
 # ======================== apps ========================
 
 
