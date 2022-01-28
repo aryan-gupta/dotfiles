@@ -22,34 +22,49 @@ COLOR_ACNTDRK_D='';
 COLOR_WARNING_N='';
 COLOR_WARNING_L='';
 COLOR_WARNING_D='';
-
-#export PRIMARY_MONITOR='HDMI-A-0' #'DisplayPort-0'
-export PRIMARY_MONITOR='DisplayPort-0'
-export TV_MONITOR='HDMI-A-0'
-export LEFT_MONITOR='DisplayPort-0'
-export RIGHT_MONITOR='DisplayPort-0'
-
-# xrandr \
-#   --output VGA-1 --off \
-#   --output HDMI-1 --off \
-#   --output DP-1 --primary --mode 3840x1600 --pos 3840x560 --rotate left \
-#   --output HDMI-2 --off --output HDMI-3 --mode 3840x2160 --pos 0x0 --rotate normal
-
-xrandr \
-  --output DisplayPort-0 --primary --mode 3840x1600 --pos 3840x560 --rotate normal --set TearFree on \
-  --output HDMI-A-0 --mode 3840x2160 --pos 0x0 --rotate normal \
-  --output DVI-D-0 --off \
-  --output DVI-I-1 --off
-
-# xrandr --output DisplayPort-0 --off \
-#        --output DisplayPort-1 --off \
-#        --output DisplayPort-2 --off \
-#        --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
+# ======================== colors =======================
 
 
-bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 A B
-bspc monitor $TV_MONITOR -d 9 0
 
+# ======================== displays and desktops ========================
+case $HOSTNAME in
+  ("lws420") 
+    export PRIMARY_MONITOR='DisplayPort-0'
+    export LEFT_MONITOR='DVI-0'
+
+    xrandr \
+      --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x320 --rotate normal \
+      --output $LEFT_MONITOR --mode 1920x1080 --pos 0x0 --rotate right
+    
+    bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
+    bspc monitor $LEFT_MONITOR -d A B
+  ;;
+
+  ("boson")
+    export PRIMARY_MONITOR='DisplayPort-0'
+    xrandr --output DisplayPort-0 --off \
+      --output DisplayPort-1 --off \
+      --output DisplayPort-2 --off \
+      --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
+  ;;
+
+  ("graviton") 
+    export TV_MONITOR='HDMI-A-0'
+    export LEFT_MONITOR='DisplayPort-0'
+    export RIGHT_MONITOR='DisplayPort-0'
+
+    xrandr \
+      --output VGA-1 --off \
+      --output HDMI-1 --off \
+      --output DP-1 --primary --mode 3840x1600 --pos 3840x560 --rotate left \
+      --output HDMI-2 --off --output HDMI-3 --mode 3840x2160 --pos 0x0 --rotate normal
+
+  ;;
+  (*)   echo "How did I get in the middle of nowhere?";;
+esac
+# ======================== displays and desktops ========================
+
+# ======================== apps ========================
 killall -q sxhkd     ; sxhkd &
 killall -q picom     ; picom --experimental-backends &
 killall -q nitrogen  ; nitrogen --restore &
@@ -86,15 +101,25 @@ killall -q polybar  ;
     polybar ws-flags &
 
 case $HOSTNAME in
+  ("lws420")
+    polybar time &
+  ;;
+
   ("boson")
     killall -q libinput-gestures-setup && libinput-gestures-setup start &
-    ;;
+  ;;
+
   ("graviton")
     # [ ! -s ~/.config/mpd/pid ] && mpd
-    ;;
-  (*) ;;
-esac
+  ;;
 
+  (*) 
+  ;;
+esac
+# ======================== apps ========================
+
+
+# ======================== window manager ========================
 # wmname LG3D &
 
 gap=25
@@ -153,3 +178,4 @@ void_empty_desktop(){
 # Focus the last desktop after all windows are closed
 # bspc subscribe node_transfer |  while read -r _; do void_empty_desktop; done
 bspc subscribe node_remove   |  while read -r _; do void_empty_desktop; done &
+# ======================== window manager ========================
