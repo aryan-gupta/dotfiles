@@ -28,7 +28,7 @@ COLOR_WARNING_D='';
 
 # ======================== displays and desktops ========================
 case $HOSTNAME in
-  ("lws420") 
+  ("lws420.mosaic.uncc.edu") 
     export PRIMARY_MONITOR='DisplayPort-0'
     export LEFT_MONITOR='DVI-0'
 
@@ -67,13 +67,14 @@ esac
 # ======================== apps ========================
 case $HOSTNAME in
   ("lws420.mosaic.uncc.edu")
-    polybar time &
     export BROWSER="firefox"
+    export POLYBAR_TIME="True"
   ;;
 
   ("boson")
     killall -q libinput-gestures-setup && libinput-gestures-setup start &
     export BROWSER="chrome"
+    export POLYBAR_TIME="True"
   ;;
 
   ("graviton")
@@ -114,7 +115,7 @@ export DATE_TEXT="%Y%{F$COLOR_SECONDARY}-%{F-}%m%{F$COLOR_SECONDARY}-%{F-}%d"
 export TIME_TEXT="%H%{F$COLOR_SECONDARY}:%{F-}%M"
 killall -q polybar  ;
     polybar ws &
-#    polybar time &
+    [ $POLYBAR_TIME = "True" ] && polybar time &
     polybar ws-tv &
     polybar music &
     polybar sysinfo &

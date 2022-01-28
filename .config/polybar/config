@@ -58,7 +58,7 @@ inherit = bar/wm
 width = 260
 
 [bar/ws-tv]
-monitor = ${env:TV_MONITOR:HDMI-3}
+monitor = ${env:LEFT_MONITOR:HDMI-3}
 inherit = bar/wm
 width = 70
 offset-x = 100%:-70
