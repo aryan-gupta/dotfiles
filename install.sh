@@ -25,3 +25,6 @@ mv    "${HOME}/.config-bak/*" "${HOME}/.config/"
 
 # remove old .config folder
 rm -r "${HOME}/.config-bak"
+
+# install alacritty machine specific options
+ln -s "${HOME}/.config/alacritty/alacritty-${HOST}.yml" "${HOME}/.config/alacritty/alacritty-local.yml"
