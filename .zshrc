@@ -34,13 +34,13 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -52,7 +52,7 @@ HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -85,9 +85,10 @@ source /etc/profile
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+# export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$HOME/.local/bin:$HOME/.config/bin:$PATH:$GEM_HOME/bin"
 
+# Needed for bspwm java windows
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # You may need to manually set your language environment
@@ -104,7 +105,7 @@ export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -121,6 +122,7 @@ alias sv="sudo vim"
 alias p="zathura"
 alias n="ncmpcpp"
 alias pacman="sudo pacman"
+alias apt="sudo apt"
 
 # Config for Spaceship prompt
 SPACESHIP_PROMPT_ORDER=(
@@ -137,22 +139,22 @@ SPACESHIP_PROMPT_ORDER=(
   # xcode         # Xcode section
   # swift         # Swift section
   # golang        # Go section
-  php           # PHP section
-  rust          # Rust section
+  # php           # PHP section
+  # rust          # Rust section
   # haskell       # Haskell Stack section
   # julia         # Julia section
   docker        # Docker section
-  aws           # Amazon Web Services section
+  # aws           # Amazon Web Services section
   venv          # virtualenv section
   # conda         # conda virtualenv section
-  pyenv         # Pyenv section
+  # pyenv         # Pyenv section
   # dotnet        # .NET section
   # ember         # Ember.js section
   # kubecontext   # Kubectl context section
   exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
+  # vi_mode       # Vi-mode indicator
   # jobs          # Background jobs indicator
   # exit_code     # Exit code section
   char          # Prompt character
