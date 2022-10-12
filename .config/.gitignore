@@ -1,0 +1,22 @@
+# ignore everything except
+/*
+
+# files
+!/.gitignore
+!/betterlockscreenrc
+
+# folders
+!/alacritty/
+!/bspwm/
+!/cava/
+!/Code - OSS/
+!/dunst/
+!/flameshot/
+!/i3/
+!/mpd/
+!/ncmpcpp/
+!/picom/
+!/polybar/
+!/rofi/
+!/sxhkd/
+!/zathura/
