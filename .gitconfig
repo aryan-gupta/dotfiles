@@ -1,15 +1,25 @@
+[include]
+	path = ~/.gitconfig-local
+
 [user]
 	name = Aryan Gupta
-	email = kuantum.freak@gmail.com
+	email = me@theguptaempire.net
+
 [credential]
-	helper = store
+	helper = store --file ~/.git-credentials
+
 [core]
-	autocrlf = false
-	editor = nano
+	autocrlf = true
+	editor = vim
+
 [diff]
 	tool = default-difftool
+
 [difftool "default-difftool"]
 	cmd = code --wait --diff $LOCAL $REMOTE
-	
+
 [pull]
 	rebase = false
+
+[commit]
+	gpgsign = true
