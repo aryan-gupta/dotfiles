@@ -11,12 +11,15 @@ ln -s "${REPO_DIR}/.gitconfig-${HOST}" ".gitconfig-local"
 
 pushd "${REPO_DIR}/.config"  >> /dev/null
 
-for D in *; do
-	if [ -d "${D}" ]; then
-		pushd "${HOME}/.config" >> /dev/null
-		if [ -d "${D}" ]; then
-			ln -s "${REPO_DIR}/.config/${D}" "${D}"
-		fi
-		popd >> /dev/null
-	fi
-done
+# save the old .config folder
+cp -r "${HOME}/.config" "/tmp/.config-bak"
+mv    "${HOME}/.config" "${HOME}/.config-bak"
+
+# create ln of the dotfiles
+ln -s "${REPO_DIR}/.config"   "${HOME}/.config"
+
+# move old .config items back
+mv    "${HOME}/.config-bak/*" "${HOME}/.config/"
+
+# remove old .config folder
+rm -r "${HOME}/.config-bak"
