@@ -5,8 +5,8 @@ REPO_DIR="${HOME}/Projects/scripts/nix/linux.files"
 
 # install gitdetails
 pushd "${HOME}" >> /dev/null
-ln -s "${REPO_DIR}/.gitconfig" ".gitconfig"
-ln -s "${REPO_DIR}/.gitconfig-${HOST}" ".gitconfig-local"
+ln -s "${REPO_DIR}/.gitconfig" "${HOME}/.gitconfig"
+ln -s "${REPO_DIR}/.gitconfig-${HOST}" "${HOME}/.gitconfig-local"
 
 # install and overwrite .zshrc and .bashrc
 rm "${HOME}/.zshrc"
