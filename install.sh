@@ -8,6 +8,12 @@ pushd "${HOME}" >> /dev/null
 ln -s "${REPO_DIR}/.gitconfig" ".gitconfig"
 ln -s "${REPO_DIR}/.gitconfig-${HOST}" ".gitconfig-local"
 
+# install and overwrite .zshrc and .bashrc
+rm "${HOME}/.zshrc"
+ln -s "${REPO_DIR}/.zshrc" "${HOME}/.zshrc"
+rm "${HOME}/.bashrc"
+ln -s "${REPO_DIR}/.bashrc" "${HOME}/.bashrc"
+
 
 pushd "${REPO_DIR}/.config"  >> /dev/null
 
