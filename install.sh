@@ -4,7 +4,6 @@ set -x
 REPO_DIR="${HOME}/Projects/scripts/nix/linux.files"
 
 # install gitdetails
-pushd "${HOME}" >> /dev/null
 ln -s "${REPO_DIR}/.gitconfig" "${HOME}/.gitconfig"
 ln -s "${REPO_DIR}/.gitconfig-${HOST}" "${HOME}/.gitconfig-local"
 
@@ -13,9 +12,6 @@ rm "${HOME}/.zshrc"
 ln -s "${REPO_DIR}/.zshrc" "${HOME}/.zshrc"
 rm "${HOME}/.bashrc"
 ln -s "${REPO_DIR}/.bashrc" "${HOME}/.bashrc"
-
-
-pushd "${REPO_DIR}/.config"  >> /dev/null
 
 # save the old .config folder
 cp -r "${HOME}/.config" "/tmp/.config-bak"
