@@ -73,7 +73,7 @@ alt + p
 
 # work vm
 alt + w
-	virt-manager --connect qemu:///system --show-domain-console ubuntu-work-vm
+	virt-manager --connect qemu:///system --show-domain-console win10-work-vm
 
 #
 # bspwm hotkeys
