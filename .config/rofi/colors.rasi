@@ -19,5 +19,7 @@
 
     red:                  rgba ( 220, 50, 47, 100% );
     blue:                 rgba ( 38, 139, 210, 100% );
+
+    separatorcolor:  rgba(255, 255, 255, 100%);
 }
 
