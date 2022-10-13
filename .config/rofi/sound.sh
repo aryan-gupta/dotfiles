@@ -13,8 +13,8 @@ television="📺"
 
 # Variable passed to rofi
 options="$headphone\n$computer\n$television"
-internal_sound_card="alsa_card.pci-0000_00_1b.0"
-gpu_sound_card="alsa_card.pci-0000_03_00.1"
+internal_sound_card="alsa_card.pci-0000_0a_00.4"
+gpu_sound_card="alsa_card.pci-0000_08_00.1"
 
 # chosen="$(echo -e "$options" | $rofi_command -p "祥  $uptime  |     $cpu  |  ﬙  $memory " -dmenu -selected-row 2)"
 chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 1)"
