@@ -54,19 +54,21 @@ case $HOSTNAME in
     export LEFT_MONITOR='DisplayPort-2'
     export RIGHT_MONITOR='DisplayPort-1'
 
-    # Current config
     xrandr \
-        --output DisplayPort-0 --primary --mode 3840x1600 --pos 4920x560 --rotate normal \
-        --output DisplayPort-1 --mode 1920x1080 --pos 8760x240 --rotate left \
-        --output DisplayPort-2 --mode 1920x1080 --pos 3840x240 --rotate left \
-        --output HDMI-A-0 --mode 3840x2160 --pos 0x0 --rotate normal
+      --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 4920x560 --rotate normal \
+      --output $RIGHT_MONITOR             --mode 1920x1080 --pos 8760x240 --rotate left \
+      --output $LEFT_MONITOR              --mode 1920x1080 --pos 3840x240 --rotate left \
+      --output $TV_MONITOR                --mode 3840x2160 --pos 0x0      --rotate normal
 
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
     bspc monitor $LEFT_MONITOR -d A
     bspc monitor $RIGHT_MONITOR -d B
     bspc monitor $TV_MONITOR -d C
   ;;
-  (*)   echo "How did I get in the middle of nowhere?";;
+
+  (*)
+    echo "How did I get in the middle of nowhere?"
+  ;;
 esac
 # ======================== displays and desktops ========================
 
