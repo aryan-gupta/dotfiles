@@ -20,7 +20,7 @@ super + q
 
 # flameshot
 {shift +,_}Print
-	flameshot {full -c -p ~/Pictures,gui}
+	flameshot {full -c -p ~/Pictures,gui} && bspc node -f pointed.local
 
 XF86AudioRaiseVolume
 	pactl set-sink-volume @DEFAULT_SINK@ +10%
