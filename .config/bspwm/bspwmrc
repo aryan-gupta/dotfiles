@@ -94,6 +94,16 @@ killall -q dunst     ; dunst &
 killall -q flameshot ; flameshot &
 killall -q unclutter ; unclutter --timeout 2 --jitter 5 --exclude-root --ignore-scrolling --fork
 
+case $HOSTNAME in
+  ("boson")
+    killall -q libinput-gestures-setup && libinput-gestures-setup start &
+    ;;
+  ("graviton")
+    # [ ! -s ~/.config/mpd/pid ] && mpd
+    ;;
+  (*) ;;
+esac
+
 # foreground is shade of white
 # background is flat shade of black or transparent
 # primary is dark accent color
