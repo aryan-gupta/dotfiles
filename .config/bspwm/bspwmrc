@@ -92,6 +92,7 @@ killall -q nitrogen  ; nitrogen --restore &
 killall -q redshift  ; redshift -P -O 3500 &
 killall -q dunst     ; dunst &
 killall -q flameshot ; flameshot &
+killall -q unclutter ; unclutter --timeout 2 --jitter 5 --exclude-root --ignore-scrolling --fork
 
 # foreground is shade of white
 # background is flat shade of black or transparent
@@ -182,4 +183,10 @@ void_empty_desktop(){
 # Focus the last desktop after all windows are closed
 # bspc subscribe node_transfer |  while read -r _; do void_empty_desktop; done
 bspc subscribe node_remove   |  while read -r _; do void_empty_desktop; done &
+
+
+xsetroot -cursor_name left_ptr &
+
+# Disable CapsLock
+setxkbmap -option ctrl:nocaps
 # ======================== window manager ========================
