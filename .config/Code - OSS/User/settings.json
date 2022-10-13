@@ -37,10 +37,11 @@
   },
   "workbench.sideBar.location": "right",
   "editor.minimap.enabled": false,
-  "window.zoomLevel": 1,
-  "window.menuBarVisibility": "toggle",
-  "workbench.activityBar.visible": false,
+  "window.zoomLevel": -1,
+  "window.menuBarVisibility": "compact",
   "files.associations": {
     "*.rasi": "css"
   },
+  "editor.largeFileOptimizations": false,
+  "security.workspace.trust.untrustedFiles": "open",
 }
