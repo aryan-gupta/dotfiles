@@ -12,7 +12,7 @@ computer="🖥️"
 television="📺"
 
 # Variable passed to rofi
-options="$headphone\n$computer\n$television"
+options="$television\n$headphone\n$computer"
 internal_sound_card="alsa_card.pci-0000_0a_00.4"
 gpu_sound_card="alsa_card.pci-0000_08_00.1"
 

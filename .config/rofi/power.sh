@@ -34,10 +34,10 @@ msg() {
 }
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$lock\n$suspend\n$logout\n$game"
+options="$shutdown\n$reboot\n$lock\n$game\n$suspend\n$logout"
 
 # chosen="$(echo -e "$options" | $rofi_command -p "祥  $uptime  |     $cpu  |  ﬙  $memory " -dmenu -selected-row 2)"
-chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 2)"
+chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 3)"
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
