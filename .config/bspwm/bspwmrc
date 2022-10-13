@@ -49,35 +49,10 @@ case $HOSTNAME in
   ;;
 
   ("graviton") 
-    #export PRIMARY_MONITOR='HDMI-A-0' #'DisplayPort-0'
     export PRIMARY_MONITOR='DisplayPort-0'
     export TV_MONITOR='HDMI-A-0'
     export LEFT_MONITOR='DisplayPort-2'
     export RIGHT_MONITOR='DisplayPort-1'
-
-    : ' This is for old Asus Z97 mobo
-    xrandr \
-      --output VGA-1 --off \
-      --output HDMI-1 --off \
-      --output DP-1 --primary --mode 3840x1600 --pos 3840x560 --rotate left \
-      --output HDMI-2 --off --output HDMI-3 --mode 3840x2160 --pos 0x0 --rotate normal
-    '
-
-    : ' This is for main monitor and TV
-    xrandr \
-      --output DisplayPort-0 --primary --mode 3840x1600 --pos 3840x560 --rotate normal --set TearFree on \
-      --output HDMI-A-0 --mode 3840x2160 --pos 0x0 --rotate normal \
-      --output DVI-D-0 --off \
-      --output DVI-I-1 --off
-    '
-
-    : '
-    xrandr \
-      --output DisplayPort-0 --primary --mode 3840x1600 --pos 3840x560 --rotate normal --set TearFree on -r 60.00 \
-      --output DisplayPort-1 --mode 1920x1080 --pos 7680x240 --rotate left \
-      --output DisplayPort-2 --mode 1920x1080 --pos 7680x240 --rotate right \
-      --output HDMI-A-0 --mode 3840x2160 --pos 0x0 --rotate normal
-    '
 
     # Current config
     xrandr \
@@ -85,13 +60,6 @@ case $HOSTNAME in
         --output DisplayPort-1 --mode 1920x1080 --pos 8760x240 --rotate left \
         --output DisplayPort-2 --mode 1920x1080 --pos 3840x240 --rotate left \
         --output HDMI-A-0 --mode 3840x2160 --pos 0x0 --rotate normal
-
-    : '
-    xrandr --output DisplayPort-0 --off \
-           --output DisplayPort-1 --off \
-           --output DisplayPort-2 --off \
-           --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
-    '
 
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
     bspc monitor $LEFT_MONITOR -d A
