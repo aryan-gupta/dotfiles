@@ -181,3 +181,6 @@ setopt HIST_IGNORE_SPACE
 # bind ctrl+Backspace to delete word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
+
+# https://stackoverflow.com/questions/62931101
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
