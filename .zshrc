@@ -182,5 +182,8 @@ setopt HIST_IGNORE_SPACE
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 
+# allows gpg to use terminal for password input
+export GPG_TTY="$( tty )"
+
 # https://stackoverflow.com/questions/62931101
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
