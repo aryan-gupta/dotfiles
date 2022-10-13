@@ -58,7 +58,7 @@ inherit = bar/wm
 width = 260
 
 [bar/ws-tv]
-monitor = ${env:LEFT_MONITOR:HDMI-3}
+monitor = ${env:TV_MONITOR:HDMI-3}
 inherit = bar/wm
 width = 70
 offset-x = 100%:-70
@@ -108,7 +108,7 @@ monitor = ${env:PRIMARY_MONITOR:DisplayPort-0}
 inherit = bar/bottom
 
 module-margin = 0
-width = 510
+width = 500
 offset-x = 100%:-500
 
 modules-center = root-fs home-fs nas-fs temp cpu mem
