@@ -2,7 +2,7 @@
 
 configuration {
     modi: "window,drun,run";
-    theme: "clean";
+    /* theme: "clean"; */
     show-icons: true;
     /* run-command: "alacritty --command {cmd}"; */
     kb-mode-next: "Super+l,Shift+Right,Control+Tab,Alt+l,bracketright";
