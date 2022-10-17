@@ -9,7 +9,7 @@
 	helper = store --file ~/.git-credentials
 
 [core]
-	autocrlf = true
+	autocrlf = false
 	editor = vim
 
 [diff]
