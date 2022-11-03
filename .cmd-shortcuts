@@ -1,0 +1,32 @@
+
+gitstashpush() {
+    # checkout our new
+    git checkout -b tmp/stash-autopush &&
+    # add out modified files
+    git add -A &&
+    # commit a WIP commit
+    git commit -m 'WIP: autopush' &&
+    # git push
+    git push --force --set-upstream origin tmp/stash-autopush
+
+    # checkout old branch
+    # https://stackoverflow.com/questions/7206801/
+    git checkout "@{-1}" &&
+    # delete tmp branch
+    git branch -D tmp/stash-autopush
+}
+
+gitstashpull() {
+    git pull &&
+    git merge HEAD &> /dev/null
+
+    # https://stackoverflow.com/questions/30733415/
+    if [ $? -ne 0 ]; then; echo "Merge in progress."; return; fi
+
+    git cherry-pick -n remotes/origin/tmp/stash-autopush &&
+    git reset &&
+    git push origin --delete tmp/stash-autopush
+}
+
+# gets your public ip address
+alias publicip='curl ipinfo.io/ip'
