@@ -123,6 +123,7 @@ alias p="zathura"
 alias n="ncmpcpp"
 alias pacman="sudo pacman"
 alias apt="sudo apt"
+alias gitk="gitk --all &"
 source ~/.cmd-shortcuts
 
 # Config for Spaceship prompt
