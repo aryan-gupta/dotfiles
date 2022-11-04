@@ -86,7 +86,7 @@ source /etc/profile
 
 export MANPATH="/usr/local/man:$MANPATH"
 # export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$HOME/.local/bin:$HOME/.config/bin:$PATH:$GEM_HOME/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.config/bin:$GEM_HOME/bin"
 
 # Needed for bspwm java windows
 export _JAVA_AWT_WM_NONREPARENTING=1
