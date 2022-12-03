@@ -19,7 +19,7 @@ gpu_sound_card="alsa_card.pci-0000_07_00.1"
 external_dac="alsa_card.usb-Schiit_Audio_Schiit_Modi_3E-00"
 
 # chosen="$(echo -e "$options" | $rofi_command -p "祥  $uptime  |     $cpu  |  ﬙  $memory " -dmenu -selected-row 2)"
-chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 1)"
+chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 0)"
 case $chosen in
     $headphone)
         pactl set-card-profile $external_dac        pro-audio
