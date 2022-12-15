@@ -2,26 +2,32 @@
 
 HOSTNAME=$(hostname)
 
+
 # ======================== colors =======================
-COLOR_BACKGND_N='#1A1A1A'
-COLOR_BACKGND_L=''
-COLOR_BACKGND_D=''
+# background is flat shade of black
+export COLOR_BACKGND_N='#1A1A1A'
+export COLOR_BACKGND_L=''
+export COLOR_BACKGND_D=''
 
-COLOR_FOREGND_N='#F5F5F5'
-COLOR_FOREGND_L=''
-COLOR_FOREGND_D=''
+# foreground is shade of white
+export COLOR_FOREGND_N='#F5F5F5'
+export COLOR_FOREGND_L=''
+export COLOR_FOREGND_D=''
 
-COLOR_ACNTLGT_N='#43B48A'
-COLOR_ACNTLGT_L=''
-COLOR_ACNTLGT_D=''
+# seconday is light accent color
+export COLOR_ACNTLGT_N='#F4D35E'
+export COLOR_ACNTLGT_L=''
+export COLOR_ACNTLGT_D=''
 
-COLOR_ACNTDRK_N='#818848';
-COLOR_ACNTDRK_L='';
-COLOR_ACNTDRK_D='';
+# primary is dark accent color
+export COLOR_ACNTDRK_N='#391C5F';
+export COLOR_ACNTDRK_L='#703C90';
+export COLOR_ACNTDRK_D='#1C0E2F';
 
-COLOR_WARNING_N='';
-COLOR_WARNING_L='';
-COLOR_WARNING_D='';
+# warnings are alert colors (green, yellow, red)
+export COLOR_WARNING_H='#d24d57';
+export COLOR_WARNING_M='#F1F514';
+export COLOR_WARNING_L='#CAFFD0';
 # ======================== colors =======================
 
 
@@ -118,26 +124,18 @@ case $HOSTNAME in
   (*) ;;
 esac
 
-# foreground is shade of white
-# background is flat shade of black or transparent
-# primary is dark accent color
-# seconday is light accent color
-# alert is alert color TBD
-export COLOR_FOREGROUND='#FFf5f5f5'
-export COLOR_BACKGROUND='#FF1A1A1A'
-export COLOR_PRIMARY='#FF818848' #'#FF808080'
-export COLOR_SECONDARY='#FF43B48A'
-export COLOR_ALERT='#FFd24d57'
-
-export ROOT_FS_TEXT="%{F$COLOR_PRIMARY}root%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
-export HOME_FS_TEXT="%{F$COLOR_PRIMARY}home%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
-export NAS_FS_TEXT="%{F$COLOR_PRIMARY}nas%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
-export TEMP_TEXT="%{F$COLOR_PRIMARY}temp%{F-}%{F$COLOR_SECONDARY}:%{F-} %temperature-c% "
-export CPU_TEXT="%{F$COLOR_PRIMARY}cpu%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage-sum:3% "
-export MEM_TEXT="%{F$COLOR_PRIMARY}mem%{F-}%{F$COLOR_SECONDARY}:%{F-} %percentage_used:2%% "
-export MUSIC_TEXT="%title%%{F$COLOR_SECONDARY} - %{F-}%{F$COLOR_PRIMARY}%artist%%{F-}"
-export DATE_TEXT="%Y%{F$COLOR_SECONDARY}-%{F-}%m%{F$COLOR_SECONDARY}-%{F-}%d"
-export TIME_TEXT="%H%{F$COLOR_SECONDARY}:%{F-}%M"
+export ROOT_FS_TEXT="%{F$COLOR_ACNTLGT_N}root%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export HOME_FS_TEXT="%{F$COLOR_ACNTLGT_N}home%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export NAS_FS_TEXT="%{F$COLOR_ACNTLGT_N}nas%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export ROOT_FS_TEXT_ERR="%{F$COLOR_ACNTLGT_N}root%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_H}!MNT%{F-} "
+export HOME_FS_TEXT_ERR="%{F$COLOR_ACNTLGT_N}home%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_H}!MNT%{F-} "
+export NAS_FS_TEXT_ERR="%{F$COLOR_ACNTLGT_N}nas%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_H}!MNT%{F-} "
+export TEMP_TEXT="%{F$COLOR_ACNTLGT_N}temp%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %temperature-c% "
+export CPU_TEXT="%{F$COLOR_ACNTLGT_N}cpu%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage-sum:3% "
+export MEM_TEXT="%{F$COLOR_ACNTLGT_N}mem%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export MUSIC_TEXT="%title%%{F$COLOR_ACNTDRK_L} - %{F-}%{F$COLOR_ACNTLGT_N}%artist%%{F-}"
+export DATE_TEXT="%Y%{F$COLOR_ACNTDRK_L}-%{F-}%m%{F$COLOR_ACNTDRK_L}-%{F-}%d"
+export TIME_TEXT="%H%{F$COLOR_ACNTDRK_L}:%{F-}%M"
 killall -q polybar  ;
     polybar ws &
     [ $POLYBAR_TIME = "True" ] && polybar time &

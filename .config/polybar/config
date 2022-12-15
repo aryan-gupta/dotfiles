@@ -17,11 +17,11 @@
 ;==========================================================
 
 [colors]
-background = ${env:COLOR_BACKGROUND:#FF000000}
-foreground = ${env:COLOR_FOREGROUND:#FFFFFFFF}
-primary = ${env:COLOR_PRIMARY:#FF39FF14}
-secondary = ${env:COLOR_SECONDARY:#FF39FF14}
-alert = ${env:COLOR_ALERT:#FFbd2c40}
+background = ${env:COLOR_BACKGND_N}
+foreground = ${env:COLOR_FOREGND_N}
+light = ${env:COLOR_ACNTLGT_N}
+dark = ${env:COLOR_ACNTDRK_N}
+alert = ${env:COLOR_WARNING_H}
 
 [global/wm]
 margin-top = -30
@@ -121,7 +121,7 @@ mount-0 = /
 
 label-mounted = ${env:ROOT_FS_TEXT:root: %percentage_used:2%% }
 label-mounted-foreground = ${colors.foreground}
-label-unmounted = "ERR "
+label-unmounted = ${env:ROOT_FS_TEXT_ERR}
 label-unmounted-foreground = ${colors.alert}
 
 [module/home-fs]
@@ -132,7 +132,7 @@ mount-0 = /home
 
 label-mounted = ${env:HOME_FS_TEXT:home: %percentage_used:2%% }
 label-mounted-foreground = ${colors.foreground}
-label-unmounted = "ERR "
+label-unmounted = ${env:HOME_FS_TEXT_ERR}
 label-unmounted-foreground = ${colors.alert}
 
 [module/nas-fs]
@@ -143,7 +143,7 @@ mount-0 = /nas/archive
 
 label-mounted = ${env:NAS_FS_TEXT:nas: %percentage_used:2%% }
 label-mounted-foreground = ${colors.foreground}
-label-unmounted = "ERR "
+label-unmounted = ${env:NAS_FS_TEXT_ERR}
 label-unmounted-foreground = ${colors.alert}
 
 [module/temp]
@@ -222,7 +222,7 @@ ws-icon-default = ○
 
 label-focused = %icon%
 label-focused-background = ${colors.background}
-label-focused-underline= ${colors.secondary}
+label-focused-underline= ${colors.light}
 label-focused-padding = 1
 
 label-occupied = %icon%
@@ -233,7 +233,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
 label-empty = "○"
-label-empty-foreground = ${colors.primary}
+label-empty-foreground = ${colors.dark}
 label-empty-padding = 1
 
 [module/mpds]
@@ -430,9 +430,9 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.dark}
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.dark}
 label-separator = |
 label-separator-foreground = ${colors.foreground}
 
@@ -462,15 +462,15 @@ blacklist-0 = num lock
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
-format-prefix-underline = ${colors.secondary}
+format-prefix-underline = ${colors.dark}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.dark}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = ${colors.dark}
+label-indicator-underline = ${colors.dark}
 
 
 [settings]
