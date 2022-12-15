@@ -34,18 +34,6 @@ export COLOR_WARNING_L='#CAFFD0';
 
 # ======================== displays and desktops ========================
 case $HOSTNAME in
-  ("lws420.mosaic.uncc.edu") 
-    export PRIMARY_MONITOR='DisplayPort-0'
-    export LEFT_MONITOR='DVI-0'
-
-    xrandr \
-      --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x320 --rotate normal \
-      --output $LEFT_MONITOR --mode 1920x1080 --pos 0x0 --rotate right
-    
-    bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
-    bspc monitor $LEFT_MONITOR -d A B
-  ;;
-
   ("boson")
     export PRIMARY_MONITOR='eDP-1'
     xrandr --output $PRIMARY_MONITOR --primary --mode 1920x1200 --pos 0x0 --rotate normal
@@ -78,11 +66,6 @@ esac
 
 # ======================== apps ========================
 case $HOSTNAME in
-  ("lws420.mosaic.uncc.edu")
-    export BROWSER="firefox"
-    export POLYBAR_TIME="True"
-  ;;
-
   ("boson")
     killall -q libinput-gestures-setup && libinput-gestures-setup start &
     xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Natural Scrolling Enabled'      1
