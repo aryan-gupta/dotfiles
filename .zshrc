@@ -2,7 +2,7 @@
 # manager
 if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ];
 then
-	startx
+	startx bspwm
 fi
 
 # If you come from bash you might have to change your $PATH.
