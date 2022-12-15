@@ -41,11 +41,12 @@ case $HOSTNAME in
   ;;
 
   ("boson")
-    export PRIMARY_MONITOR='DisplayPort-0'
-    xrandr --output DisplayPort-0 --off \
-      --output DisplayPort-1 --off \
-      --output DisplayPort-2 --off \
-      --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
+    export PRIMARY_MONITOR='eDP-1'
+    xrandr --output $PRIMARY_MONITOR --primary --mode 1920x1200 --pos 0x0 --rotate normal
+      #--output DisplayPort-1 --off \
+      #--output DisplayPort-2 --off \
+      #--output HDMI-A-0 --off # --mode 1920x1080 --pos 0x0 --rotate normal
+    bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
   ;;
 
   ("graviton") 
@@ -81,8 +82,13 @@ case $HOSTNAME in
 
   ("boson")
     killall -q libinput-gestures-setup && libinput-gestures-setup start &
-    export BROWSER="chrome"
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Natural Scrolling Enabled'      1
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Enabled'                1
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Drag Lock Enabled'      1
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Button Mapping Enabled' 0 1
+    export BROWSER="firefox"
     export POLYBAR_TIME="True"
+    export POLYBAR_MUSIC="False"
   ;;
 
   ("graviton")
