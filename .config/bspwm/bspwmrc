@@ -57,20 +57,17 @@ case $HOSTNAME in
 
   ("graviton") 
     export PRIMARY_MONITOR='DisplayPort-0'
-    export TV_MONITOR='HDMI-A-0'
     export LEFT_MONITOR='DisplayPort-2'
     export RIGHT_MONITOR='DisplayPort-1'
 
     xrandr \
-      --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 4920x560 --rotate normal \
-      --output $RIGHT_MONITOR             --mode 1920x1080 --pos 8760x240 --rotate left \
-      --output $LEFT_MONITOR              --mode 1920x1080 --pos 3840x240 --rotate left \
-      --output $TV_MONITOR                --mode 3840x2160 --pos 0x0      --rotate normal
+      --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x320 --rotate normal \
+      --output $RIGHT_MONITOR             --mode 1920x1080 --pos 4920x0 --rotate left \
+      --output $LEFT_MONITOR              --mode 1920x1080 --pos 0x0 --rotate left
 
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
     bspc monitor $LEFT_MONITOR -d A
     bspc monitor $RIGHT_MONITOR -d B
-    bspc monitor $TV_MONITOR -d C
   ;;
 
   (*)
