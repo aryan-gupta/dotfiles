@@ -8,15 +8,15 @@
 rofi_command="rofi -theme power $@"
 
 uptime=$(uptime -p | sed -e 's/up //g')
-cpu=$(sh ~/.config/rofi/usedcpu)
-memory=$(sh ~/.config/rofi/usedram)
+# cpu=$(sh ~/.config/rofi/usedcpu)
+# memory=$(sh ~/.config/rofi/usedram)
 
 # Options
-shutdown=""
-reboot=""
-lock=""
-suspend=""
-logout=""
+shutdown=""
+reboot=""
+lock=""
+suspend=""
+logout=""
 game=""
 
 # Confirmation

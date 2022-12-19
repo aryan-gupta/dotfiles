@@ -7,8 +7,8 @@ cpu=$(sh ~/.config/rofi/usedcpu)
 memory=$(sh ~/.config/rofi/usedram)
 
 # Options
-headphone="🎧"
-computer="🖥️"
+headphone=""
+computer=""
 
 # Variable passed to rofi
 options="$headphone\n$computer"
