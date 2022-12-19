@@ -18,7 +18,7 @@ configuration {
     transparency:                   "real";
     border-radius:                  0px;
     location:                       center;
-    width:                       	600px;
+    width:                       	400px;
     x-offset:                       0px;
     y-offset:                       0px;
     background-color:               @background;
@@ -45,32 +45,31 @@ element {
     text-color:                     @foreground;
     orientation:                    vertical;
     border-radius:                  0px;
-    /* padding:                        25px; */
+    padding:                        5px;
 }
 
 element-text {
 	font:							"feather 35";
     expand:                         true;
     horizontal-align:               0.5;
-    vertical-align:                 0;
-    padding:                        10px 10px 35px 10px;
-    margin:                         25px 0px 35px 0px;
+    vertical-align:                 0.5;
+    padding:                        10px 10px 10px 10px;
 }
 
 textbox-prompt-colon {
     font: @large-font;
 	expand: 						false;
-	str: 							"uptime:";
+	str: 							"volume:";
 	background-color: 				@accent;
 	text-color: 					@background;
-    padding: 10px 20px 30px 20px;
+    padding: 10px 20px 10px 20px;
     margin: 0px 0.3em 0em 0em ;
 }
 
 #prompt {
     font: @large-font;
     enabled: 						true;
-    padding:                        10px 0px 30px 20px;
+    padding:                        10px 20px 10px 20px;
 	background-color: 				@background;
 	text-color: 					@accent;
     border-color:                  	@accent;
@@ -106,7 +105,6 @@ element alternate.active {
 
 element selected {
     background-color:               @accent;
-    text-color:                     @background;
     border:                  		0px;
     border-radius:                  0px;
     border-color:                  	@border;
