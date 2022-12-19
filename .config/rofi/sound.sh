@@ -2,9 +2,8 @@
 
 rofi_command="rofi -theme sound $@"
 
-uptime=$(uptime -p | sed -e 's/up //g')
-cpu=$(sh ~/.config/rofi/usedcpu)
-memory=$(sh ~/.config/rofi/usedram)
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP  '\d+(?=%)' | head -n 1)
+volume="$volume%"
 
 # Options
 headphone=""
@@ -21,8 +20,7 @@ external_dac="alsa_card.usb-Schiit_Audio_Schiit_Modi_3E-00"
 external_dac_sink="alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.pro-output-0"
 
 # chosen="$(echo -e "$options" | $rofi_command -p "祥  $uptime  |     $cpu  |  ﬙  $memory " -dmenu -selected-row 2)"
-chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 0)"
-sink=""
+chosen="$(echo -e "$options" | $rofi_command -p "$volume" -dmenu -selected-row 0)"
 case $chosen in
     $headphone)
         pactl set-card-profile $external_dac        pro-audio
