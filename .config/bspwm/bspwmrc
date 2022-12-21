@@ -2,6 +2,7 @@
 
 HOSTNAME=$(hostname)
 
+alacritty &
 
 # ======================== colors =======================
 # background is flat shade of black
