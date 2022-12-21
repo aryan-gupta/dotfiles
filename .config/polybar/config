@@ -103,6 +103,17 @@ scroll-down = mpc next
 ; SYSINFO bar
 ; ============
 
+[bar/sysinfo-laptop]
+monitor = ${env:PRIMARY_MONITOR:DisplayPort-0}
+inherit = bar/bottom
+
+module-margin = 0
+width = 500
+offset-x = 100%:-500
+
+modules-center = wifi bat 
+
+
 [bar/sysinfo]
 monitor = ${env:PRIMARY_MONITOR:DisplayPort-0}
 inherit = bar/bottom
