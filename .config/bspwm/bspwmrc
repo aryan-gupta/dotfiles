@@ -48,15 +48,29 @@ case $HOSTNAME in
     export PRIMARY_MONITOR='DisplayPort-0'
     export LEFT_MONITOR='DisplayPort-2'
     export RIGHT_MONITOR='DisplayPort-1'
+    export TABLET_MONITOR='HDMI-A-0'
 
-    xrandr \
-      --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x320 --rotate normal \
-      --output $RIGHT_MONITOR             --mode 1920x1080 --pos 4920x0 --rotate left \
-      --output $LEFT_MONITOR              --mode 1920x1080 --pos 0x0 --rotate left
+    if $(xrandr | grep "HDMI-A-0 disconnected" -q); then
+      xrandr \
+        --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x320 --rotate normal \
+        --output $RIGHT_MONITOR             --mode 1920x1080 --pos 4920x0 --rotate left \
+        --output $LEFT_MONITOR              --mode 1920x1080 --pos 0x0 --rotate left
+    else
+      xrandr \
+        --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x320 --rotate normal \
+        --output $RIGHT_MONITOR             --mode 1920x1080 --pos 4920x0 --rotate left \
+        --output $LEFT_MONITOR              --mode 1920x1080 --pos 0x0 --rotate left \
+        --output $TABLET_MONITOR            --mode 1920x1080 --pos 2040x1920 --rotate normal
+    fi
+
+    # these settings are now being managed by xp-pen-tablet aur package
+    # xinput --map-to-output 'UGTABLET 13.3 inch PenDisplay Mouse' HDMI-A-0
+    # xinput --map-to-output 'UGTABLET 13.3 inch PenDisplay Pen (0)' HDMI-A-0
 
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
     bspc monitor $LEFT_MONITOR -d A
     bspc monitor $RIGHT_MONITOR -d B
+    bspc monitor $TABLET_MONITOR -d C
   ;;
 
   (*)
