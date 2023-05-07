@@ -104,14 +104,14 @@ scroll-down = mpc next
 ; ============
 
 [bar/sysinfo-laptop]
-monitor = ${env:PRIMARY_MONITOR:DisplayPort-0}
+monitor = ${env:PRIMARY_MONITOR:eDP-1}
 inherit = bar/bottom
 
 module-margin = 0
 width = 500
-offset-x = 100%:-500
+offset-x = 50%:-100
 
-modules-center = wifi bat 
+modules-center = backlight-acpi battery alsa
 
 
 [bar/sysinfo]
