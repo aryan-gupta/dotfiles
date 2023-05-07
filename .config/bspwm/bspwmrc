@@ -95,7 +95,8 @@ case $HOSTNAME in
 
   ("graviton")
     # [ ! -s ~/.config/mpd/pid ] && mpd
-    export BROWSER="google-chrome-stable"
+    export BROWSER="firefox"
+    export VPNBROWSER="brave"
     export POLYBAR_TIME="True"
     export POLYBAR_MUSIC="False"
   ;;
