@@ -65,7 +65,7 @@ alt + t
 
 # file browser
 alt + f
-	nautilus --new-window
+	thunar
 
 # private browsing
 alt + p
