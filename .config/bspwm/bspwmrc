@@ -119,12 +119,12 @@ case $HOSTNAME in
     export POLYBAR_MUSIC="False"
   ;;
 
-  (*) 
+  (*)
   ;;
 esac
 
 killall -q sxhkd     ; sxhkd &
-killall -q picom     ; picom --experimental-backends &
+killall -q picom     ; picom &
 killall -q nitrogen  ; nitrogen --restore &
 killall -q redshift  ; redshift -P -O 3500 &
 killall -q dunst     ; dunst &
