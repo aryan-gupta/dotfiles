@@ -1,8 +1,8 @@
 # If we are starting in a tty session then go ahead and start our window
 # manager
-if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ];
-then
-	startx bspwm
+
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
 fi
 
 # If you come from bash you might have to change your $PATH.
