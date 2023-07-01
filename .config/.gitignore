@@ -21,3 +21,8 @@
 !/rofi/
 !/sxhkd/
 !/zathura/
+
+# Code - OSS
+/Code - OSS/*[Cc]ache*
+/Code - OSS/**
+!/Code - OSS/User/settings.json
