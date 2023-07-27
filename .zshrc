@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # If we are starting in a tty session then go ahead and start our window
 # manager
 STARTX_LOGDIR="${HOME}/.local/share/startx/"
