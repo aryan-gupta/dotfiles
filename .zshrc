@@ -1,8 +1,9 @@
 # If we are starting in a tty session then go ahead and start our window
 # manager
-
+STARTX_LOGDIR="${HOME}/.local/share/startx/"
+mkdir -p $STARTX_LOGDIR
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
+  exec startx >> "${STARTX_LOGDIR}/.startx.log" 2>> "${STARTX_LOGDIR}/.startx.err"
 fi
 
 # If you come from bash you might have to change your $PATH.
