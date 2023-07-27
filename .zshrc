@@ -11,6 +11,9 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# https://stackoverflow.com/questions/62931101
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
@@ -189,6 +192,3 @@ bindkey '^[[3;5~' kill-word
 
 # allows gpg to use terminal for password input
 export GPG_TTY="$( tty )"
-
-# https://stackoverflow.com/questions/62931101
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
