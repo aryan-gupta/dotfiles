@@ -87,7 +87,7 @@ case $chosen in
     $game)
         ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			sudo /usr/bin/restart_into_windows
+			sudo /usr/bin/restart_into_windows.sh
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else
