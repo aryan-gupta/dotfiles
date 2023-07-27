@@ -72,10 +72,6 @@ case $HOSTNAME in
     # echo $xrandr_cmd
     eval $xrandr_cmd
 
-    # these settings are now being managed by xp-pen-tablet aur package
-    # xinput --map-to-output 'UGTABLET 13.3 inch PenDisplay Mouse' HDMI-A-0
-    # xinput --map-to-output 'UGTABLET 13.3 inch PenDisplay Pen (0)' HDMI-A-0
-
     [ $PRIMARY_MONITOR ] && bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
     [ $LEFT_MONITOR    ] && bspc monitor $LEFT_MONITOR    -d A
     [ $RIGHT_MONITOR   ] && bspc monitor $RIGHT_MONITOR   -d B
@@ -166,7 +162,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      false
 bspc config single_monocle       true
 
-bspc config pointer_modifier super
+# https://github.com/baskerville/bspwm/issues/600
+bspc config pointer_modifier mod4
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_corner
 bspc config pointer_action3 resize_side
@@ -182,6 +179,7 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
 bspc rule -a Zathura state=tiled
+bspc rule -a pentablet state=floating
 bspc rule -a *:*:Lenna state=tiled
 
 bspc config external_rules_command "$HOME/.config/bspwm/java_fix"
