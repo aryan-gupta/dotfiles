@@ -3,11 +3,15 @@
 
 HOSTNAME=$(hostname)
 
-if pgrep -x "alacritty" > /dev/null
+# if start file exists, bspwm was restarted
+BSPWMRC_START_FILE="/tmp/BSPWM_START.txt"
+if [ -f "$BSPWMRC_START_FILE" ];
 then
   echo "BSPWM was restarted"
 else
-  alacritty &
+  echo "Welcome to Linux"
+  echo $(date) > "$BSPWMRC_START_FILE"
+  alacritty -e pipes.sh -t 3 &
 fi
 
 # ======================== colors =======================
