@@ -118,6 +118,8 @@ killall -q dunst     ; dunst &
 killall -q flameshot ; flameshot &
 killall -q unclutter ; unclutter --timeout 2 --jitter 5 --exclude-root --ignore-scrolling --fork
 
+bspc rule -a pentablet hidden=on desktop=C ; sudo /usr/lib/pentablet/pentablet.sh &
+
 export ROOT_FS_TEXT="%{F$COLOR_ACNTLGT_N}root%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
 export HOME_FS_TEXT="%{F$COLOR_ACNTLGT_N}home%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
 export NAS_FS_TEXT="%{F$COLOR_ACNTLGT_N}nas%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
@@ -179,7 +181,6 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
 bspc rule -a Zathura state=tiled
-bspc rule -a pentablet state=floating
 bspc rule -a *:*:Lenna state=tiled
 
 bspc config external_rules_command "$HOME/.config/bspwm/java_fix"
