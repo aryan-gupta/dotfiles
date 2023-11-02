@@ -7,7 +7,7 @@ volume="$volume%"
 
 # Options
 headphone=""
-computer=""
+computer=""
 
 # Variable passed to rofi
 options="$headphone\n$computer"
