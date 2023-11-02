@@ -116,6 +116,7 @@ esac
 
 killall -q sxhkd     ; sxhkd &
 killall -q picom     ; picom &
+killall -q feh       ; feh --no-fehbg --bg-center ~/.background.jpg &
 killall -q nitrogen  ; nitrogen --restore &
 killall -q redshift  ; redshift -P -O 3500 &
 killall -q dunst     ; dunst &
