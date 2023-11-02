@@ -68,8 +68,9 @@ alt + f
 	thunar
 
 # private browsing
-alt + p
-	$VPNBROWSER &
+# alt + p
+# 	/opt/piavpn/bin/pia-client & ;\
+# 	$VPNBROWSER &
 
 # work vm
 alt + w
