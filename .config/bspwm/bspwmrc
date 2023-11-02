@@ -3,17 +3,6 @@
 
 HOSTNAME=$(hostname)
 
-# if start file exists, bspwm was restarted
-BSPWMRC_START_FILE="/tmp/BSPWM_START.txt"
-if [ -f "$BSPWMRC_START_FILE" ];
-then
-  echo "BSPWM was restarted"
-else
-  echo "Welcome to Linux"
-  echo $(date) > "$BSPWMRC_START_FILE"
-  alacritty -e pipes.sh -t 3 &
-fi
-
 # ======================== colors =======================
 # background is flat shade of black
 export COLOR_BACKGND_N='#1A1A1A'
@@ -214,3 +203,18 @@ xsetroot -cursor_name left_ptr &
 # Disable CapsLock
 setxkbmap -option ctrl:nocaps
 # ======================== window manager ========================
+
+
+
+# if start file exists, bspwm was restarted
+BSPWMRC_START_FILE="/tmp/BSPWM_START.txt"
+if [ -f "$BSPWMRC_START_FILE" ];
+then
+  echo "BSPWM was restarted"
+else
+  echo "Welcome to Linux"
+  echo $(date) > "$BSPWMRC_START_FILE"
+  #bspc rule -a '*' -o state=floating rectangle=640x480+1600+640
+  #sleep 10
+  #alacritty --hold -e asciiquarium &
+fi
