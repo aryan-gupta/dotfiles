@@ -71,6 +71,43 @@ setxkbmap -option caps:super
 xsetroot -cursor_name left_ptr &
 # ========================= Xorg ========================
 
+# ======================== displays ========================
+case $HOSTNAME in
+  ("boson")
+    export PRIMARY_MONITOR='eDP-1'
+    xrandr --output $PRIMARY_MONITOR --primary --mode 1920x1200 --pos 0x0 --rotate normal
+      #--output DisplayPort-1 --off \
+      #--output DisplayPort-2 --off \
+      #--output HDMI-A-0 --off # --mode 1920x1080 --pos 0x0 --rotate normal
+
+    # xrandr --output eDP-1 --primary --mode 1920x1200 --pos 2560x240 --rotate normal --output HDMI-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --off --output DP-4 --off
+  ;;
+
+  ("graviton")
+    xrandr=$(xrandr)
+
+    $(echo $xrandr | grep "DisplayPort-0 connected" -q) && export PRIMARY_MONITOR='DisplayPort-0'
+    $(echo $xrandr | grep "DisplayPort-1 connected" -q) && export   RIGHT_MONITOR='DisplayPort-1'
+    $(echo $xrandr | grep "DisplayPort-2 connected" -q) && export    LEFT_MONITOR='DisplayPort-2'
+    $(echo $xrandr | grep      "HDMI-A-0 connected" -q) && export  TABLET_MONITOR='HDMI-A-0'
+
+    xrandr_cmd="xrandr "
+
+    [ $PRIMARY_MONITOR ] && xrandr_cmd="$xrandr_cmd"" --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x0    --rotate normal "
+    [ $LEFT_MONITOR    ] && xrandr_cmd="$xrandr_cmd"" --output $LEFT_MONITOR              --mode 1920x1080 --pos 0x0       --rotate left   "
+    [ $RIGHT_MONITOR   ] && xrandr_cmd="$xrandr_cmd"" --output $RIGHT_MONITOR             --mode 1920x1080 --pos 4920x0    --rotate left   "
+    [ $TABLET_MONITOR  ] && xrandr_cmd="$xrandr_cmd"" --output $TABLET_MONITOR            --mode 1920x1080 --pos 2040x1920 --rotate normal "
+
+    # echo $xrandr_cmd
+    eval $xrandr_cmd
+  ;;
+
+  (*)
+    echo "How did I get in the middle of nowhere?"
+  ;;
+esac
+# ======================== displays ========================
+
 # ======================== apps ========================
 case $HOSTNAME in
   ("boson")
@@ -128,43 +165,6 @@ killall -q polybar  ;
     polybar sysinfo &
     polybar ws-flags &
 # ======================== apps ========================
-
-# ======================== displays ========================
-case $HOSTNAME in
-  ("boson")
-    export PRIMARY_MONITOR='eDP-1'
-    xrandr --output $PRIMARY_MONITOR --primary --mode 1920x1200 --pos 0x0 --rotate normal
-      #--output DisplayPort-1 --off \
-      #--output DisplayPort-2 --off \
-      #--output HDMI-A-0 --off # --mode 1920x1080 --pos 0x0 --rotate normal
-
-    # xrandr --output eDP-1 --primary --mode 1920x1200 --pos 2560x240 --rotate normal --output HDMI-1 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --off --output DP-4 --off
-  ;;
-
-  ("graviton")
-    xrandr=$(xrandr)
-
-    $(echo $xrandr | grep "DisplayPort-0 connected" -q) && export PRIMARY_MONITOR='DisplayPort-0'
-    $(echo $xrandr | grep "DisplayPort-1 connected" -q) && export   RIGHT_MONITOR='DisplayPort-1'
-    $(echo $xrandr | grep "DisplayPort-2 connected" -q) && export    LEFT_MONITOR='DisplayPort-2'
-    $(echo $xrandr | grep      "HDMI-A-0 connected" -q) && export  TABLET_MONITOR='HDMI-A-0'
-
-    xrandr_cmd="xrandr "
-
-    [ $PRIMARY_MONITOR ] && xrandr_cmd="$xrandr_cmd"" --output $PRIMARY_MONITOR --primary --mode 3840x1600 --pos 1080x0    --rotate normal "
-    [ $LEFT_MONITOR    ] && xrandr_cmd="$xrandr_cmd"" --output $LEFT_MONITOR              --mode 1920x1080 --pos 0x0       --rotate left   "
-    [ $RIGHT_MONITOR   ] && xrandr_cmd="$xrandr_cmd"" --output $RIGHT_MONITOR             --mode 1920x1080 --pos 4920x0    --rotate left   "
-    [ $TABLET_MONITOR  ] && xrandr_cmd="$xrandr_cmd"" --output $TABLET_MONITOR            --mode 1920x1080 --pos 2040x1920 --rotate normal "
-
-    # echo $xrandr_cmd
-    eval $xrandr_cmd
-  ;;
-
-  (*)
-    echo "How did I get in the middle of nowhere?"
-  ;;
-esac
-# ======================== displays ========================
 
 # ======================== handoff ========================
 # if terminal start file exists start the terminal
