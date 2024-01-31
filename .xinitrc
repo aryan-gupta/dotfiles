@@ -104,7 +104,7 @@ killall -q redshift  ; redshift -P -O 3500 &
 killall -q dunst     ; dunst &
 killall -q flameshot ; flameshot &
 killall -q unclutter ; unclutter --timeout 2 --jitter 5 --exclude-root --ignore-scrolling --fork
-killall -q feh       ; feh --no-fehbg --bg-center ~/.background.jpg &
+killall -q feh       ; feh --no-fehbg --bg-center ~/.config/wallpaper.jpg &
 
 [ $TABLET_MONITOR  ] && bspc rule -a pentablet hidden=on desktop=C && sudo /usr/lib/pentablet/pentablet.sh &
 
