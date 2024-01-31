@@ -22,6 +22,12 @@
 !/zathura/
 !/gtk-3.0/
 
+# discord app singles
+!/discord/
+/discord/**
+!/discord/settings.json
+
+
 # vscope app singles
 !/Code - OSS/
 /Code - OSS/*[Cc]ache*
