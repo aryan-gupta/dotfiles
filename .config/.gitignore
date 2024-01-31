@@ -10,7 +10,6 @@
 !/awesome/
 !/bspwm/
 !/cava/
-!/Code - OSS/
 !/dunst/
 !/flameshot/
 !/i3/
@@ -23,7 +22,8 @@
 !/zathura/
 !/gtk-3.0/
 
-# Code - OSS
+# vscope app singles
+!/Code - OSS/
 /Code - OSS/*[Cc]ache*
 /Code - OSS/**
 !/Code - OSS/User/settings.json
