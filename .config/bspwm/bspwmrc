@@ -16,8 +16,8 @@ case $HOSTNAME in
     [ $TABLET_MONITOR  ] && bspc monitor $TABLET_MONITOR  -d C
   ;;
 
-  (*)
-    echo "How did I get in the middle of nowhere?"
+  ("default")
+    bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
   ;;
 esac
 
@@ -80,6 +80,74 @@ void_empty_desktop(){
 # Focus the last desktop after all windows are closed
 # bspc subscribe node_transfer |  while read -r _; do void_empty_desktop; done
 bspc subscribe node_remove   |  while read -r _; do void_empty_desktop; done &
+
+
+
+# ======================== apps ========================
+case $HOSTNAME in
+  ("boson")
+    killall -q libinput-gestures-setup && libinput-gestures-setup start &
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Natural Scrolling Enabled'      1
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Enabled'                1
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Drag Lock Enabled'      1
+    xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Button Mapping Enabled' 0 1
+    xinput set-prop 'Logitech Wireless Mouse'        'libinput Accel Speed'                    -0.9
+    export BROWSER="firefox"
+    export POLYBAR_TIME="True"
+    export POLYBAR_MUSIC="False"
+  ;;
+
+  ("graviton")
+    # [ ! -s ~/.config/mpd/pid ] && mpd
+    export BROWSER="firefox"
+    export VPNBROWSER="brave"
+    export POLYBAR_TIME="True"
+    export POLYBAR_MUSIC="False"
+  ;;
+
+  (*)
+  ;;
+esac
+
+killall -q sxhkd     ; sxhkd &
+killall -q picom     ; picom &
+killall -q nitrogen  ; nitrogen --restore &
+killall -q redshift  ; redshift -P -O 3500 &
+killall -q dunst     ; dunst &
+killall -q flameshot ; flameshot &
+killall -q unclutter ; unclutter --timeout 2 --jitter 5 --exclude-root --ignore-scrolling --fork
+
+[ $TABLET_MONITOR  ] && bspc rule -a pentablet hidden=on desktop=C && sudo /usr/lib/pentablet/pentablet.sh &
+
+export ROOT_FS_TEXT="%{F$COLOR_ACNTLGT_N}root%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export HOME_FS_TEXT="%{F$COLOR_ACNTLGT_N}home%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export NAS_FS_TEXT="%{F$COLOR_ACNTLGT_N}nas%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export ROOT_FS_TEXT_ERR="%{F$COLOR_ACNTLGT_N}root%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_H}!MNT%{F-} "
+export HOME_FS_TEXT_ERR="%{F$COLOR_ACNTLGT_N}home%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_H}!MNT%{F-} "
+export NAS_FS_TEXT_ERR="%{F$COLOR_ACNTLGT_N}nas%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_H}!MNT%{F-} "
+export TEMP_TEXT="%{F$COLOR_ACNTLGT_N}temp%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %temperature-c% "
+export CPU_TEXT="%{F$COLOR_ACNTLGT_N}cpu%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage-sum:3% "
+export MEM_TEXT="%{F$COLOR_ACNTLGT_N}mem%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage_used:2%% "
+export MUSIC_TEXT="%title%%{F$COLOR_ACNTDRK_L} - %{F-}%{F$COLOR_ACNTLGT_N}%artist%%{F-}"
+export DATE_TEXT="%Y%{F$COLOR_ACNTDRK_L}-%{F-}%m%{F$COLOR_ACNTDRK_L}-%{F-}%d"
+export TIME_TEXT="%H%{F$COLOR_ACNTDRK_L}:%{F-}%M"
+killall -q polybar  ;
+    polybar ws &
+    [ $POLYBAR_TIME = "True" ] && polybar time &
+    # polybar ws-tv &
+    [ $POLYBAR_MUSIC = "True" ] && polybar music &
+    polybar sysinfo &
+    polybar ws-flags &
+# ======================== apps ========================
+
+
+
+
+
+
+
+
+
 
 
 # if start file exists, bspwm was restarted
