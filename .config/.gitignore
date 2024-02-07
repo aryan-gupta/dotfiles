@@ -4,13 +4,13 @@
 # files
 !/.gitignore
 !/betterlockscreenrc
+!/wallpaper.jpg
 
 # folders
 !/alacritty/
 !/awesome/
 !/bspwm/
 !/cava/
-!/Code - OSS/
 !/dunst/
 !/flameshot/
 !/i3/
@@ -21,8 +21,16 @@
 !/rofi/
 !/sxhkd/
 !/zathura/
+!/gtk-3.0/
 
-# Code - OSS
+# discord app singles
+!/discord/
+/discord/**
+!/discord/settings.json
+
+
+# vscope app singles
+!/Code - OSS/
 /Code - OSS/*[Cc]ache*
 /Code - OSS/**
 !/Code - OSS/User/settings.json

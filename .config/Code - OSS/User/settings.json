@@ -45,4 +45,5 @@
   "editor.largeFileOptimizations": false,
   "security.workspace.trust.untrustedFiles": "open",
   "redhat.telemetry.enabled": false,
+  "workbench.colorTheme": "Default Dark Modern",
 }

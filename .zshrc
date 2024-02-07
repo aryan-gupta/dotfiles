@@ -1,12 +1,18 @@
+#!/bin/zsh
+
 # If we are starting in a tty session then go ahead and start our window
 # manager
-
+STARTX_LOGDIR="${HOME}/.local/share/startx/"
+mkdir -p $STARTX_LOGDIR
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
+  exec startx >> "${STARTX_LOGDIR}/.startx.log" 2>> "${STARTX_LOGDIR}/.startx.err"
 fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# https://stackoverflow.com/questions/62931101
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -186,6 +192,3 @@ bindkey '^[[3;5~' kill-word
 
 # allows gpg to use terminal for password input
 export GPG_TTY="$( tty )"
-
-# https://stackoverflow.com/questions/62931101
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST

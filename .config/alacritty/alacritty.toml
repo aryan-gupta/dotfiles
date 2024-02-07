@@ -1,0 +1,41 @@
+import = ["/home/aryan/.config/alacritty/alacritty-local.toml"]
+live_config_reload = true
+
+[colors.primary]
+background = "#1A1A1A"
+
+# [colors.selection]
+# save_to_clipboard = true
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 9.0
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[scrolling]
+history = 10000
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+decorations = "none"
+dynamic_padding = true
+opacity = 1.0
+title = "Alacritty"
+
+[window.padding]
+x = 2
+y = 0

@@ -14,9 +14,7 @@ uptime=$(uptime -p | sed -e 's/up //g')
 # Options
 shutdown=""
 reboot=""
-lock=""
 suspend=""
-logout=""
 game=""
 
 # Confirmation
@@ -34,10 +32,10 @@ msg() {
 }
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$lock\n$game\n$suspend\n$logout"
+options="$shutdown\n$game\n$suspend\n$reboot"
 
 # chosen="$(echo -e "$options" | $rofi_command -p "祥  $uptime  |     $cpu  |  ﬙  $memory " -dmenu -selected-row 2)"
-chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 3)"
+chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 1)"
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
@@ -46,52 +44,29 @@ case $chosen in
 			systemctl poweroff
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
-        else
-			msg
         fi
         ;;
+
     $reboot)
 		ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			systemctl reboot
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
-        else
-			msg
         fi
         ;;
-    $lock)
-        betterlockscreen -l blur
-        ;;
+
     $suspend)
 		mpc -q pause
 		systemctl suspend
-        ;;
-    $logout)
-		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
-				bspc quit
-			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
-				i3-msg exit
-			fi
-		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
         ;;
 
     $game)
         ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			sudo /usr/bin/restart_into_windows
+			sudo /usr/bin/restart_into_windows.sh
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
-        else
-			msg
         fi
         ;;
 esac
