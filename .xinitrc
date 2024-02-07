@@ -80,7 +80,7 @@ esac
 
 # killall -q feh       ; 
 feh --no-fehbg --bg-center ~/.config/wallpaper.jpg &
-sudo /usr/bin/plymouth quit --retain-splash
+# sudo /usr/bin/plymouth quit --retain-splash
 # ======================== displays ========================
 
 # ========================= Xorg ========================
