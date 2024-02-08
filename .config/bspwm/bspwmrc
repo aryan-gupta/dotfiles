@@ -93,6 +93,7 @@ case $HOSTNAME in
     xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Button Mapping Enabled' 0 1
     xinput set-prop 'Logitech Wireless Mouse'        'libinput Accel Speed'                    -0.9
     export BROWSER="firefox"
+    export COMPOSITOR="True"
     export POLYBAR_TIME="True"
     export POLYBAR_MUSIC="False"
   ;;
@@ -101,16 +102,18 @@ case $HOSTNAME in
     # [ ! -s ~/.config/mpd/pid ] && mpd
     export BROWSER="firefox"
     export VPNBROWSER="brave"
+    export COMPOSITOR="True"
     export POLYBAR_TIME="True"
     export POLYBAR_MUSIC="False"
   ;;
 
-  (*)
+  ("default")
+    export COMPOSITOR="False"
   ;;
 esac
 
 killall -q sxhkd     ; sxhkd &
-killall -q picom     ; picom &
+killall -q picom     ; [ $COMPOSITOR = "True" ] && picom &
 killall -q nitrogen  ; nitrogen --restore &
 killall -q redshift  ; redshift -P -O 3500 &
 killall -q dunst     ; dunst &
