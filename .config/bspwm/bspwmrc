@@ -16,7 +16,7 @@ case $HOSTNAME in
     [ $TABLET_MONITOR  ] && bspc monitor $TABLET_MONITOR  -d C
   ;;
 
-  ("default")
+  (*)
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
   ;;
 esac
@@ -107,7 +107,7 @@ case $HOSTNAME in
     export POLYBAR_MUSIC="False"
   ;;
 
-  ("default")
+  (*)
     export COMPOSITOR="False"
   ;;
 esac

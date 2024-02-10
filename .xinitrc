@@ -71,7 +71,7 @@ case $HOSTNAME in
     eval $xrandr_cmd
   ;;
 
-  ("default")
+  (*)
     export PRIMARY_MONITOR='Virtual-1'
     xrandr --output $PRIMARY_MONITOR --primary --mode 1920x1200 --pos 0x0 --rotate normal
   ;;
