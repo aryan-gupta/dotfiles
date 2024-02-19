@@ -23,6 +23,12 @@
 !/zathura/
 !/gtk-3.0/
 
+
+# thunar fm
+!/Thunar/
+/Thunar/accels.scm
+
+
 # discord app singles
 !/discord/
 /discord/**
