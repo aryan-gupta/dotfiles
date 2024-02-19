@@ -13,25 +13,34 @@ super + @space
 	rofi -show drun -theme launcher -kb-cancel "super+space,Escape"
 
 # power menu
-super + e
-	~/.config/rofi/power.sh -kb-cancel "super+e,Escape"
+super + BackSpace
+	~/.config/rofi/power.sh -kb-cancel "super+BackSpace,Escape"
 
-# power menu
-super + q
-	~/.config/rofi/sound.sh -kb-cancel "super+e,Escape"
+# audio menu
+super + a
+	~/.config/rofi/sound.sh -kb-cancel "super+a,Escape"
 
 # flameshot
 {shift +,_}Print
-	flameshot {full -c -p ~/Pictures,gui} && bspc node -f pointed.local
+	flameshot {full -c -p ~/,gui} && bspc node -f pointed.local
 
 XF86AudioRaiseVolume
 	pactl set-sink-volume @DEFAULT_SINK@ +10%
 
+super + button4
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+
 XF86AudioLowerVolume
 	pactl set-sink-volume @DEFAULT_SINK@ -10%
 
+super + button5
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+super + button2
+ 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
@@ -41,15 +50,6 @@ XF86MonBrightnessUp
 
 XF86MonBrightnessDown
 	xbacklight -dec 10
-
-super + button4
-	pactl set-sink-volume @DEFAULT_SINK@ +2%
-
-super + button5
-	pactl set-sink-volume @DEFAULT_SINK@ -2%
-
-super + button2
- 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # =================================================================
 #
@@ -66,7 +66,7 @@ alt + {c,i}
 alt + x
 	code -n
 
-# [UNUSED] terminal
+# terminal here
 alt + t
 	~/.config/bspwm/open_terminal_here
 
@@ -182,7 +182,7 @@ super + ctrl + space
 	fi
 
 # cancel the preselection for the focused desktop
-super + ctrl + Escape
+super + ctrl + BackSpace
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 # preselect the ratio
@@ -217,7 +217,7 @@ super + {0-9,minus,equal}
 	&& bspc desktop -f "$target" || bspc desktop -f last.local.occupied
 
 # swaps desktops in a given direction
-super + alt + {h,l}
+super + {comma,period}
 	swp="$(bspc query -D --names -d {prev,next}.local)"; \
 	foc="$(bspc query -D --names -d focused.local)"; \
 	bspc desktop "$swp" -s "$foc"; \
@@ -229,7 +229,7 @@ super + alt + {h,l}
 # EX. 1 2 ○ 4 ○ 5 6 ○ 8
 #      will become
 #     1 2 3 4 5 6 ○ ○ ○
-super + backslash
+super + slash
 	c=1; \
 	bspc query -D --names -d .occupied | while read d; do \
 		bspc desktop "$d" -s "$c"; \
