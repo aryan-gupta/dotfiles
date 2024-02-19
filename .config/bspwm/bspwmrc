@@ -84,7 +84,10 @@ void_empty_desktop(){
 # bspc subscribe node_transfer |  while read -r _; do void_empty_desktop; done
 bspc subscribe node_remove   |  while read -r _; do void_empty_desktop; done &
 
+killall -q sxhkd     ; sxhkd &
 killall -q polybar   ; ~/.config/polybar/start.sh &
+
+[ $TABLET_MONITOR  ] && bspc rule -a pentablet hidden=on desktop=C && sudo /usr/lib/pentablet/pentablet.sh &
 
 # if start file exists, bspwm was restarted
 BSPWMRC_START_FILE="/tmp/BSPWM_START.txt"

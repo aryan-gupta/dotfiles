@@ -106,6 +106,7 @@ case $HOSTNAME in
   ;;
 esac
 # ======================== displays ========================
+feh --no-fehbg --bg-fill ~/.config/wallpaper.jpg &
 
 # ======================== apps ========================
 case $HOSTNAME in
@@ -129,16 +130,11 @@ case $HOSTNAME in
   ;;
 esac
 
-killall -q sxhkd     ; sxhkd &
 killall -q picom     ; picom &
-killall -q nitrogen  ; nitrogen --restore &
 killall -q redshift  ; redshift -P -O 3500 &
 killall -q dunst     ; dunst &
 killall -q flameshot ; flameshot &
 killall -q unclutter ; unclutter --timeout 2 --jitter 5 --exclude-root --ignore-scrolling --fork
-killall -q feh       ; feh --no-fehbg --bg-center ~/.config/wallpaper.jpg &
-
-[ $TABLET_MONITOR  ] && bspc rule -a pentablet hidden=on desktop=C && sudo /usr/lib/pentablet/pentablet.sh &
 # ======================== apps ========================
 
 # ======================== handoff ========================
