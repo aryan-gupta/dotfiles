@@ -7,6 +7,9 @@ case $HOSTNAME in
   ("boson")
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0
     bspc monitor HDMI-1 -d A
+
+    export POLYBAR_TIME="True"
+    export POLYBAR_MUSIC="False"
   ;;
 
   ("graviton")
@@ -14,6 +17,10 @@ case $HOSTNAME in
     [ $LEFT_MONITOR    ] && bspc monitor $LEFT_MONITOR    -d A
     [ $RIGHT_MONITOR   ] && bspc monitor $RIGHT_MONITOR   -d B
     [ $TABLET_MONITOR  ] && bspc monitor $TABLET_MONITOR  -d C
+
+
+    export POLYBAR_TIME="True"
+    export POLYBAR_MUSIC="False"
   ;;
 
   (*)
@@ -81,6 +88,7 @@ void_empty_desktop(){
 # bspc subscribe node_transfer |  while read -r _; do void_empty_desktop; done
 bspc subscribe node_remove   |  while read -r _; do void_empty_desktop; done &
 
+killall -q polybar   ; ~/.config/polybar/start.sh &
 
 # if start file exists, bspwm was restarted
 BSPWMRC_START_FILE="/tmp/BSPWM_START.txt"
