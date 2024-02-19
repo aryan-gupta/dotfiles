@@ -93,10 +93,6 @@ alt + w
 #
 # =================================================================
 
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
 # [UNUSED] send the newest marked node to the newest preselected node
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
@@ -118,14 +114,6 @@ super + {o,i}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
-
-# preselect the split direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 # [UNUSED] swap the current and last selected node
 super + ctrl + Return
@@ -163,15 +151,15 @@ super + Escape
 #
 # =================================================================
 
-# close and kill windows
-super + {_,shift + }w
-	bspc node -{c,k}
-
 # [UNUSED] create and remove recepticles
 super + {_,shift + }r
     insert={true,false}; \
     $insert && bspc node -i || \
     for win in `bspc query -N -n any.leaf.!window`; do bspc node $win -k ; done;
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
 
 # set the window state
 super + {t,shift + t,f,s}
@@ -182,9 +170,9 @@ super + {t,shift + t,f,s}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
-# focus / swap the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+# close and kill windows and nodes
+super + {_,shift + }w
+	bspc node -{c,k}
 
 # [UNUSED] focus / swap the node for the given path jump
 super + {_,shift + }{p,b,comma,period}
@@ -200,6 +188,10 @@ super + {_,shift + }{p,b,comma,period}
 super + {_,shift + }Tab
 	bspc node -f {next,prev}.local.window
 
+# focus / swap the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
 # send focused to the given desktop. If it is the last node
 # on the desktop then follow the focus to that desktop
 super + shift + {0-9,minus,equal}
@@ -213,6 +205,10 @@ super + shift + {0-9,minus,equal}
 # use super + ctrl. This includes preselect
 #
 # =================================================================
+
+# preselect the split direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
 
 # move the last focused or marked window to preselected location
 # if current node is preselected (bspc query -N -n '.local.!automatic') then move
@@ -241,6 +237,10 @@ super + ctrl + space
 		bspc node -f "last.local" ; \
 	fi
 
+# cancel the preselection for the focused desktop
+super + ctrl + Escape
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
 # preselect the ratio
 # if the node is preselected then preselect the
 # ratio. If its not preselected change the ratio
@@ -257,6 +257,10 @@ super + ctrl + {1-9}
 #
 # =================================================================
 
+# focus the next / prev occupied desktop
+super + {_,shift + }grave
+	bspc desktop -f {next,prev}.local.occupied
+
 # focus new clean desktop
 super + n
 	bspc desktop -f next.!occupied.local
@@ -267,10 +271,6 @@ super + {0-9,minus,equal}
 	target='{0-9,A,B}'; \
 	[ "$(bspc query -D -d "$target")" != "$(bspc query -D -d)" ] \
 	&& bspc desktop -f "$target" || bspc desktop -f last.local.occupied
-
-# focus the next / prev occupied desktop
-super + {_,shift + }grave
-	bspc desktop -f {next,prev}.local.occupied
 
 # swaps desktops in a given direction
 super + alt + {h,l}
