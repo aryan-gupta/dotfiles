@@ -3,8 +3,10 @@
 # If we are starting in a tty session then go ahead and start our window
 # manager
 STARTX_LOGDIR="${HOME}/.local/share/startx/"
+export LOGOUT_FILE="/tmp/boson-aryan-donotstartwm"
 mkdir -p $STARTX_LOGDIR
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [ ! -f "$LOGOUT_FILE" ]; then
+  echo "$(date)" | tee $LOGOUT_FILE
   exec startx >> "${STARTX_LOGDIR}/.startx.log" 2>> "${STARTX_LOGDIR}/.startx.err"
 fi
 

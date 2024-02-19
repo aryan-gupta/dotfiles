@@ -91,13 +91,20 @@ killall -q polybar   ; ~/.config/polybar/start.sh &
 
 # if start file exists, bspwm was restarted
 BSPWMRC_START_FILE="/tmp/BSPWM_START.txt"
-if [ -f "$BSPWMRC_START_FILE" ];
-then
-  echo "BSPWM was restarted"
+if [ -f "$BSPWMRC_START_FILE" ]; then
+  echo "BSPWM was restarted at $(date)" | tee -a "$BSPWMRC_START_FILE"
 else
-  echo "Welcome to Linux"
-  echo $(date) > "$BSPWMRC_START_FILE"
-  #bspc rule -a '*' -o state=floating rectangle=640x480+1600+640
-  #sleep 10
-  #alacritty --hold -e asciiquarium &
+  echo "BSPWM was   started at $(date)" | tee -a "$BSPWMRC_START_FILE"
+
+  case $HOSTNAME in
+    ("boson")
+      bspc desktop -l monocle  
+    ;;
+
+    ("graviton")  ;;
+    (*) ;;
+  esac
+
+  bspc rule -a 'Alacritty:*' -o state=fullscreen
+  alacritty &
 fi
