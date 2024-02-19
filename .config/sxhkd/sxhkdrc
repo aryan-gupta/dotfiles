@@ -1,6 +1,8 @@
+# =================================================================
 #
-# wm independent hotkeys
+#                           SYSCORE
 #
+# =================================================================
 
 # terminal emulator
 super + Return
@@ -40,6 +42,7 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	xbacklight -dec 10
 
+# [UNUSED]
 alt + space
 	mpc toggle
 
@@ -52,10 +55,12 @@ super + button5
 super + button2
  	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+# =================================================================
 #
-# ======================  Applications ========================
+#                             APPS
 # These will need to be remapped when new keyboard comes in
 #
+# =================================================================
 
 # browser
 alt + {c,i}
@@ -65,7 +70,7 @@ alt + {c,i}
 alt + x
 	code -n
 
-# terminal
+# [UNUSED] terminal
 alt + t
 	~/.config/bspwm/open_terminal_here
 
@@ -78,13 +83,15 @@ alt + f
 # 	/opt/piavpn/bin/pia-client & ;\
 # 	$VPNBROWSER &
 
-# work vm
+# [UNUSED] work vm
 alt + w
 	virt-manager --connect qemu:///system --show-domain-console win10-work-vm
 
+# =================================================================
 #
-# bspwm hotkeys
+#                              BSPWM
 #
+# =================================================================
 
 
 
@@ -173,43 +180,25 @@ super + ctrl + i
 # super + {Left,Down,Up,Right}
 # 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#
-# ========================= WM =============================
-#
 # restart bspwm
 super + Escape
 	bspc wm -r
 
+# =================================================================
 #
-# ============================ Nodes ============================
+# we have 3 modes
+# TILED / pseudotiled mode
+# 	this is the normal mode. Items are tiled like a normal wm
+# 
+# FULLSCREEN / MONOCLE
+#	this is mainly for my laptop as it has a smaller screen 
+#	and I can use win + tab to switch between the windows
 #
+# FLOATING 
+# 	this is for the floating windows. Dont have a reason right
+#   now to use this. Will update
+#
+# =================================================================
 
 # ==== manage
 # close and kill windows
@@ -222,12 +211,12 @@ super + {_,shift + }r
     $insert && bspc node -i || \
     for win in `bspc query -N -n any.leaf.!window`; do bspc node $win -k ; done;
 
-# ==== states / flags
 # set the window state
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
+# @TODO remove cntl add alt
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
@@ -239,6 +228,11 @@ super + {_,shift + }{h,j,k,l}
 # focus the node for the given path jump
 super + {_,shift + }{p,b,comma,period}
 	bspc node -{f,s} @{parent,brother,first,second}
+# =================================================================
+#
+# focusing and swapping commands are here
+#
+# =================================================================
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }Tab
@@ -251,7 +245,14 @@ super + shift + {0-9,minus,equal}
 	[[ "$(bspc query -N -n .local.window | wc -l)" == "1" ]] \
 	&& bspc node -d "$target" --follow || bspc node -d "$target"
 
-# move the last focused window to preselected location
+# =================================================================
+#
+# most of the moving stuff around commands
+# use super + ctrl. This includes preselect
+#
+# =================================================================
+
+# move the last focused or marked window to preselected location
 # if current node is preselected (bspc query -N -n '.local.!automatic') then move
 # marked node there. If there is no marked node then move the last selected node
 # if the current node is not preselected, mode the current node to the preselected
@@ -288,9 +289,11 @@ super + ctrl + {1-9}
 	bspc node -o "$ratio" || \
 	bspc node @parent -r "$ratio"
 
+# =================================================================
 #
-# ========================== Desktops =============================
+# the environment is split into desktops
 #
+# =================================================================
 
 # focus new clean desktop
 super + n
@@ -329,3 +332,9 @@ super + backslash
 		bspc desktop  "t" -n "$c"; \
 		((c++)); \
 	done;
+
+# =================================================================
+#
+# old and unused
+#
+# =================================================================
