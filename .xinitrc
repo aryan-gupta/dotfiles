@@ -103,7 +103,6 @@ case $HOSTNAME in
   ;;
 
   (*)
-    echo "How did I get in the middle of nowhere?"
   ;;
 esac
 # ======================== displays ========================
@@ -143,18 +142,5 @@ killall -q feh       ; feh --no-fehbg --bg-center ~/.config/wallpaper.jpg &
 # ======================== apps ========================
 
 # ======================== handoff ========================
-# if terminal start file exists start the terminal
-TERM_USER_START="~/.cache/user_terminal_onstart.touch"
-if [ -f "$TERM_USER_START" ];
-then
-	echo "Starting Terminal"
-	echo $(date) > "$TERM_USER_START"
-	bspc rule -a '*' -o state=floating rectangle=640x480+1600+640
-	sleep 1
-	alacritty --hold -e asciiaquarium &
-else
-	echo "Welcome to Linux"
-fi
-
 exec /bin/bspwm
 # ======================== handoff ========================

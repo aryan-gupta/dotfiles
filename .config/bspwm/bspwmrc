@@ -24,7 +24,6 @@ case $HOSTNAME in
   ;;
 
   (*)
-    echo "How did I get in the middle of nowhere?"
   ;;
 esac
 
@@ -41,9 +40,6 @@ bspc config top_padding         -$gap
 
 bspc config border_width         0
 bspc config split_ratio          0.5
-
-bspc config borderless_monocle   true
-bspc config gapless_monocle      false
 
 bspc config borderless_monocle   true
 bspc config gapless_monocle      false
