@@ -79,10 +79,6 @@ alt + f
 # 	/opt/piavpn/bin/pia-client & ;\
 # 	$VPNBROWSER &
 
-# [UNUSED] work vm
-alt + w
-	virt-manager --connect qemu:///system --show-domain-console win10-work-vm
-
 # =================================================================
 #
 #                              BSPWM
@@ -252,6 +248,10 @@ super + backslash
 # [UNUSED]
 alt + space
 	mpc toggle
+
+# [UNUSED] work vm
+alt + w
+	virt-manager --connect qemu:///system --show-domain-console win10-work-vm
 
 # [UNUSED] send the newest marked node to the newest preselected node
 super + y
