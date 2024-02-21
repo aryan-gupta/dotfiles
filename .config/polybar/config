@@ -139,7 +139,7 @@ label-unmounted-foreground = ${colors.alert}
 type = internal/fs
 interval = 30
 
-mount-0 = /home
+mount-0 = /data
 
 label-mounted = ${env:HOME_FS_TEXT:home: %percentage_used:2%% }
 label-mounted-foreground = ${colors.foreground}
@@ -150,7 +150,7 @@ label-unmounted-foreground = ${colors.alert}
 type = internal/fs
 interval = 30
 
-mount-0 = /nas/archive
+mount-0 = /nas
 
 label-mounted = ${env:NAS_FS_TEXT:nas: %percentage_used:2%% }
 label-mounted-foreground = ${colors.foreground}
