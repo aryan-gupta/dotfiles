@@ -85,6 +85,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -191,6 +192,8 @@ setopt HIST_IGNORE_SPACE
 # bind ctrl+Backspace to delete word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
+#bindkey "^[[A" history-beginning-search-backward
+#bindkey "^[[B" history-beginning-search-forward
 
 # allows gpg to use terminal for password input
 export GPG_TTY="$( tty )"
