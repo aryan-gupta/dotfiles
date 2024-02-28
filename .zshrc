@@ -7,7 +7,10 @@ export LOGOUT_FILE="/tmp/boson-aryan-donotstartwm"
 mkdir -p $STARTX_LOGDIR
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [ ! -f "$LOGOUT_FILE" ]; then
   echo "$(date)" | tee $LOGOUT_FILE
-  exec startx >> "${STARTX_LOGDIR}/.startx.log" 2>> "${STARTX_LOGDIR}/.startx.err"
+  echo "$(date)" >> "${STARTX_LOGDIR}/startx.log"
+  echo "$(date)" >> "${STARTX_LOGDIR}/startx.err"
+
+  exec startx >> "${STARTX_LOGDIR}/startx.log" 2>> "${STARTX_LOGDIR}/startx.err"
 fi
 
 # If you come from bash you might have to change your $PATH.
