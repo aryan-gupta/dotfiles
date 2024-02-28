@@ -116,7 +116,9 @@ case $HOSTNAME in
     xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Enabled'                1
     xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Drag Lock Enabled'      1
     xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Button Mapping Enabled' 0 1
-    xinput set-prop 'Logitech Wireless Mouse'        'libinput Accel Speed'                    -0.9
+
+    (xinput list | grep 'Logitech Wireless Mouse') && xinput set-prop 'Logitech Wireless Mouse' 'libinput Accel Speed' -0.9
+
     export BROWSER="firefox"
   ;;
 
