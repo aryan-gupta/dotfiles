@@ -13,6 +13,7 @@ export MEM_TEXT="%{F$COLOR_ACNTLGT_N}mem%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percent
 export VOL_TEXT="%{F$COLOR_ACNTLGT_N}vol%{F-}%{F$COLOR_ACNTDRK_L}:%{F-}%percentage:3%% "
 export VOM_TEXT="%{F$COLOR_ACNTLGT_N}vol%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_H}mut%{F-} "
 export BL_TEXT="%{F$COLOR_ACNTLGT_N}blite%{F-}%{F$COLOR_ACNTDRK_L}:%{F-}%percentage:3%% "
+export WLAN_TEXT="%{F$COLOR_ACNTLGT_N}wifi%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %essid% "
 export BATT_C_TEXT="%{F$COLOR_ACNTLGT_N}batt%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage:2%% "
 export BATT_D_TEXT="%{F$COLOR_ACNTLGT_N}batt%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %percentage:2%% "
 export BATT_F_TEXT="%{F$COLOR_ACNTLGT_N}batt%{F-}%{F$COLOR_ACNTDRK_L}:%{F-} %{F$COLOR_WARNING_L}ful%{F-} "
@@ -21,10 +22,10 @@ export MUSIC_TEXT="%title%%{F$COLOR_ACNTDRK_L} - %{F-}%{F$COLOR_ACNTLGT_N}%artis
 export DATE_TEXT="%Y%{F$COLOR_ACNTDRK_L}-%{F-}%m%{F$COLOR_ACNTDRK_L}-%{F-}%d"
 export TIME_TEXT="%H%{F$COLOR_ACNTDRK_L}:%{F-}%M"
 
-polybar ws &
-[ $POLYBAR_TIME = "True" ] && polybar time &
 # polybar ws-tv &
-[ $POLYBAR_MUSIC = "True" ] && polybar music &
-polybar sysinfo &
-polybar sysinfo-laptop &
+polybar ws &
 polybar ws-flags &
+[ $POLYBAR_TIME   = "True"  ] && polybar time &
+[ $POLYBAR_MUSIC  = "True"  ] && polybar music &
+[ $POLYBAR_LAPTOP = "False" ] && polybar sysinfo &
+[ $POLYBAR_LAPTOP = "True"  ] && polybar sysinfo-laptop &
