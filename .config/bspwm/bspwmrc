@@ -10,6 +10,7 @@ case $HOSTNAME in
 
     export POLYBAR_TIME="True"
     export POLYBAR_MUSIC="False"
+    export POLYBAR_LAPTOP="True"
   ;;
 
   ("graviton")
@@ -21,6 +22,7 @@ case $HOSTNAME in
 
     export POLYBAR_TIME="True"
     export POLYBAR_MUSIC="False"
+    export POLYBAR_LAPTOP="False"
   ;;
 
   (*)
