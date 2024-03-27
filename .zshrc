@@ -200,3 +200,7 @@ bindkey '^[[3;5~' kill-word
 
 # allows gpg to use terminal for password input
 export GPG_TTY="$( tty )"
+
+# https://unix.stackexchange.com/questions/356753
+export SYSTEMD_PAGER=cat
+export PAGER=cat
