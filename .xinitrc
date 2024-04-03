@@ -103,8 +103,15 @@ case $HOSTNAME in
   ;;
 
   (*)
+    export PRIMARY_MONITOR='Virtual-1'
+    xrandr --output $PRIMARY_MONITOR --primary --mode 1920x1200 --pos 0x0 --rotate normal
   ;;
 esac
+
+
+# killall -q feh       ; 
+feh --no-fehbg --bg-center ~/.config/wallpaper.jpg &
+# sudo /usr/bin/plymouth quit --retain-splash
 # ======================== displays ========================
 feh --no-fehbg --bg-fill ~/.config/wallpaper.jpg &
 
