@@ -114,6 +114,8 @@ super + {t,shift + t,f,s}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
+# sticky is useful when floating mode and we want to watch a movie
+# it will stay on the destktop always
 # @TODO remove cntl add alt
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
